@@ -1,0 +1,44 @@
+﻿<Window x:Class="CRMv2.CustomerInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRMv2"
+        mc:Ignorable="d"
+        Title="Müştəri haqqında məlumat" Height="866" Width="1590" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="mainGrid" Background="#FF0E88EB" RenderTransformOrigin="0.726,0.083">
+        <DataGrid x:Name="DgvCustomer" ItemsSource="{Binding Path=Customer}" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="594" Margin="98,144,0,0" VerticalAlignment="Top" Width="737" ColumnWidth="Auto" SelectionChanged="DgvCustomer_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=id}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding Path=CustomerName}" Width="*" Header="Müştəri" />
+                <DataGridTextColumn Binding="{Binding Path=ContactPerson}" Width="*" Header="Əlaqəli şəxs" />
+                <DataGridTextColumn Binding="{Binding Path=Address}" Width="*" Header="Ünvan"/>
+                <DataGridTextColumn Binding="{Binding Path=OfficePhoneNumber}" Width="*" Header="Ofis telefonu" />
+                <DataGridTextColumn Binding="{Binding Path=MobilePhone}" Width="*" Header="Mobil telefon"/>
+                <DataGridTextColumn Binding="{Binding Path=Email}" Width="*" Header="E-poçt" />
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+        <Grid HorizontalAlignment="Left" Height="71" Margin="98,68,0,0" VerticalAlignment="Top" Width="372">
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </Grid.Background>
+            <Button x:Name="BtnSearchByText" Content="Axtar" HorizontalAlignment="Left" Margin="212,34,0,0" VerticalAlignment="Top" Width="76" Click="BtnSearchByText_Click"/>
+            <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="24" Margin="14,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="71" Margin="475,68,0,0" VerticalAlignment="Top" Width="359" Background="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
+            <ComboBox x:Name="cmbCustomers" HorizontalAlignment="Left" Margin="24,32,0,0" VerticalAlignment="Top" Width="193" Height="22"
+                      ItemsSource="{Binding Path=Customer}"
+                  DisplayMemberPath="CustomerName"
+                  SelectedValuePath="id"
+                  SelectedValue="{Binding Path=Customer}"
+                      />
+            <Button x:Name="BtnSearchByList" Content="Axtar" HorizontalAlignment="Left" Margin="257,32,0,0" VerticalAlignment="Top" Width="80" Click="BtnSearchByList_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>

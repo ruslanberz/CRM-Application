@@ -1,0 +1,23 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRMv2"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="CRMv2.AddComment"
+        mc:Ignorable="d"
+        Title="Rəy əlavə et" Height="542.045" Width="496.591" Background="#FFF05151" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ComboBox x:Name="cmbCustomerList" HorizontalAlignment="Left" Margin="81,70,0,0" VerticalAlignment="Top" Width="214" Height="24"
+                  ItemsSource="{Binding Customer}"
+                  DisplayMemberPath="CustomerName"
+                  SelectedValuePath="id"
+                  SelectedValue="{Binding Customer}"
+                  />
+        <TextBox x:Name="txtComment" HorizontalAlignment="Left" Height="191" Margin="82,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="299" TextChanged="txtComment_TextChanged"/>
+        <Button x:Name="btnAddComment" Content="Əlavə et" HorizontalAlignment="Left" Margin="179,367,0,0" VerticalAlignment="Top" Width="109" Height="34" FontWeight="Bold" Click="btnAddComment_Click"/>
+        <Label x:Name="lblCounter" Content="Qalan simvol sayi : 500" HorizontalAlignment="Left" Margin="88,333,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Müştərinin seçilməsi :" HorizontalAlignment="Left" Margin="88,45,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+    </Grid>
+</Window>
