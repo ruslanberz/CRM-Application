@@ -107,23 +107,30 @@ namespace CRMv2
             cc.ShowDialog();
         }
 
-        private void btnCompanyDelete_Click(object sender, RoutedEventArgs e)
-        {
-            AddComment ac = new AddComment();
-            ac.currentUser = loggedUser;
-            ac.Show();
-        }
 
         private void btnCompanyUpdate_Click(object sender, RoutedEventArgs e)
         {
             SelectCustomer sc = new SelectCustomer();
             sc.Show();
         }
+        private void btnDeleteCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteCustomer dc = new DeleteCustomer();
+            dc.Show();
+        }
 
+        
         private void btnCompanyInfo_Click(object sender, RoutedEventArgs e)
         {
             CustomerInfo ci = new CustomerInfo();
             ci.Show();
+        }
+
+        private void btnAddComment_Click(object sender, RoutedEventArgs e)
+        {
+            AddComment ac = new AddComment();
+            ac.currentUser = loggedUser;
+            ac.Show();
         }
     }
 }

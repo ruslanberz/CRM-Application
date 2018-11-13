@@ -39,6 +39,145 @@
                       />
             <Button x:Name="BtnSearchByList" Content="Axtar" HorizontalAlignment="Left" Margin="257,32,0,0" VerticalAlignment="Top" Width="80" Click="BtnSearchByList_Click"/>
         </Grid>
+        <Grid x:Name="GrdComments" HorizontalAlignment="Left" Height="670" Margin="862,68,0,0" VerticalAlignment="Top" Width="710">
+            <Label x:Name="lblComment_11" Content="Label" HorizontalAlignment="Left" Margin="21,1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb1" HorizontalAlignment="Left" Height="105" Margin="21,28,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_12" Content="Label" HorizontalAlignment="Left" Margin="239,1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb2" HorizontalAlignment="Left" Height="105" Margin="239,28,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_13" Content="Label" HorizontalAlignment="Left" Margin="457,1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb3" HorizontalAlignment="Left" Height="105" Margin="457,28,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_14" Content="Label" HorizontalAlignment="Left" Margin="21,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb4" HorizontalAlignment="Left" Height="105" Margin="21,162,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_15" Content="Label" HorizontalAlignment="Left" Margin="239,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb5" HorizontalAlignment="Left" Height="105" Margin="239,162,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_16" Content="Label" HorizontalAlignment="Left" Margin="457,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb6" HorizontalAlignment="Left" Height="105" Margin="457,162,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_17" Content="Label" HorizontalAlignment="Left" Margin="21,271,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb7" HorizontalAlignment="Left" Height="105" Margin="21,298,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_18" Content="Label" HorizontalAlignment="Left" Margin="239,271,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb8" HorizontalAlignment="Left" Height="105" Margin="239,298,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_19" Content="Label" HorizontalAlignment="Left" Margin="457,271,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb9" HorizontalAlignment="Left" Height="105" Margin="457,298,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_110" Content="Label" HorizontalAlignment="Left" Margin="21,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb10" HorizontalAlignment="Left" Height="105" Margin="21,432,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_111" Content="Label" HorizontalAlignment="Left" Margin="239,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb11" HorizontalAlignment="Left" Height="105" Margin="239,432,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_112" Content="Label" HorizontalAlignment="Left" Margin="457,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb12" HorizontalAlignment="Left" Height="105" Margin="457,432,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_113" Content="Label" HorizontalAlignment="Left" Margin="21,537,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb13" HorizontalAlignment="Left" Height="105" Margin="21,560,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_114" Content="Label" HorizontalAlignment="Left" Margin="239,537,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb14" HorizontalAlignment="Left" Height="105" Margin="239,560,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_115" Content="Label" HorizontalAlignment="Left" Margin="457,537,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <RichTextBox x:Name="rtb15" HorizontalAlignment="Left" Height="105" Margin="457,560,0,0" VerticalAlignment="Top" Width="204">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="RichTextBox"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Label x:Name="lblComment_21" Content="Label" HorizontalAlignment="Left" Margin="157,1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_22" Content="Label" HorizontalAlignment="Left" Margin="383,1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_23" Content="Label" HorizontalAlignment="Left" Margin="597,1,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_26" Content="Label" HorizontalAlignment="Left" Margin="597,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_25" Content="Label" HorizontalAlignment="Left" Margin="385,135,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_24" Content="Label" HorizontalAlignment="Left" Margin="159,137,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_27" Content="Label" HorizontalAlignment="Left" Margin="159,271,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_28" Content="Label" HorizontalAlignment="Left" Margin="387,271,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_29" Content="Label" HorizontalAlignment="Left" Margin="599,271,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_212" Content="Label" HorizontalAlignment="Left" Margin="599,407,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_211" Content="Label" HorizontalAlignment="Left" Margin="385,407,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_213" Content="Label" HorizontalAlignment="Left" Margin="163,537,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_210" Content="Label" HorizontalAlignment="Left" Margin="161,405,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_214" Content="Label" HorizontalAlignment="Left" Margin="387,537,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="lblComment_215" Content="Label" HorizontalAlignment="Left" Margin="601,535,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        </Grid>
+        <Label Content="Axtarış" HorizontalAlignment="Left" Margin="434,14,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Rəylər" HorizontalAlignment="Left" Margin="1160,14,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
 
     </Grid>
 </Window>

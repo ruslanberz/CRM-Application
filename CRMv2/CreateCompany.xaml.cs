@@ -97,6 +97,8 @@ namespace CRMv2
                 nc.OfficePhoneNumber = txtOfficePhoneNumber.Text;
                 nc.MobilePhone = txtCustomerMobile.Text;
                 nc.Email = txtCustomerEmail.Text;
+                nc.IsActive = true;
+                
                 
                 if (isUpdated)
                 {

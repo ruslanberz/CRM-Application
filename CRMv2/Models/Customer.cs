@@ -28,6 +28,7 @@ namespace CRMv2.Models
         public string OfficePhoneNumber { get; set; }
         public string MobilePhone { get; set; }
         public string Email { get; set; }
+        public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

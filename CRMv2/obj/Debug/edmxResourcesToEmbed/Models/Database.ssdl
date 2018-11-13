@@ -8,6 +8,7 @@
     <Property Name="CustomerID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
@@ -20,6 +21,7 @@
     <Property Name="OfficePhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="MobilePhone" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Notifications">
     <Key>

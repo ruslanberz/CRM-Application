@@ -110,3 +110,5 @@ c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\AddCom
 c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\AddComment.baml
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CustomerInfo.g.cs
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CustomerInfo.baml
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\DeleteCustomer.g.cs
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\DeleteCustomer.baml

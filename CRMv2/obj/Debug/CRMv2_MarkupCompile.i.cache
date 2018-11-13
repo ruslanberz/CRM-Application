@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\App.xaml
-71137468142
+81294547359
 21363741524
-24-1701662852
+25-1386780504
 26-1134825836
-AddComment.xaml;AddUser.xaml;CreateCompany.xaml;CustomerInfo.xaml;LoginWindow.xaml;MainPage.xaml;SelectCustomer.xaml;
+AddComment.xaml;AddUser.xaml;CreateCompany.xaml;CustomerInfo.xaml;DeleteCustomer.xaml;LoginWindow.xaml;MainPage.xaml;SelectCustomer.xaml;
 
-True
+False
 
