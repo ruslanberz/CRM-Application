@@ -48,17 +48,17 @@ namespace CRMv2
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             CRMEntities db = new CRMEntities();
-            if (!isUpdated)
-            {
-                foreach (Customer item in db.Customers.ToList())
-                {
-                    if (item.CustomerName == txtCustomerName.Text)
-                    {
-                        MessageBox.Show("Qeyd olunan müştəri adı mövcuddur!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-                }
-            }
+            //if (!isUpdated)
+            //{
+            //    foreach (Customer item in db.Customers.ToList())
+            //    {
+            //        if (item.CustomerName == txtCustomerName.Text)
+            //        {
+            //            MessageBox.Show("Qeyd olunan müştəri adı mövcuddur!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+            //            return;
+            //        }
+            //    }
+            //}
 
             if (string.IsNullOrEmpty(txtCustomerName.Text))
             {
@@ -88,6 +88,30 @@ namespace CRMv2
             {
                 MessageBox.Show("E-poct düzgün formatda daxil edilməyib!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            else if (db.Customers.FirstOrDefault(cst=>cst.CustomerName.ToLower()==txtCustomerName.Text.ToLower())!=null)
+            {
+                Customer cst = db.Customers.FirstOrDefault(cstm => cstm.CustomerName.ToLower() == txtCustomerName.Text.ToLower());
+
+                if (cst.IsActive==false)
+                {
+                    cst.CustomerName = txtCustomerName.Text;
+                    cst.ContactPerson = txtContactPerson.Text;
+                    cst.Address = txtCustomerAddress.Text;
+                    cst.OfficePhoneNumber = txtOfficePhoneNumber.Text;
+                    cst.MobilePhone = txtCustomerMobile.Text;
+                    cst.Email = txtCustomerEmail.Text;
+                    cst.IsActive = true;
+                    db.SaveChanges();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Müştəri artiq müvcuddur!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                
+            }
+           
             else
             {
                 Customer nc = new Customer();

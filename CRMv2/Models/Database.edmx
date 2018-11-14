@@ -35,6 +35,7 @@
           <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaskID" Type="int" Nullable="false" />
           <Property Name="NotificationType" Type="tinyint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -56,6 +57,7 @@
           <Property Name="CreationTime" Type="datetime" Nullable="false" />
           <Property Name="DeadlineTime" Type="datetime" Nullable="false" />
           <Property Name="isFinised" Type="bit" Nullable="false" />
+          <Property Name="FinishTime" Type="datetime" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -212,6 +214,7 @@
           <Property Name="TaskID" Type="Int32" Nullable="false" />
           <Property Name="NotificationType" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Notifications_Tasks1" FromRole="Notifications" ToRole="Tasks" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -237,6 +240,7 @@
           <NavigationProperty Name="Customer" Relationship="Self.FK_Tasks_Customers" FromRole="Tasks" ToRole="Customers" />
           <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_Tasks1" FromRole="Tasks" ToRole="Notifications" />
           <NavigationProperty Name="User" Relationship="Self.FK_Tasks_Users" FromRole="Tasks" ToRole="Users" />
+          <Property Name="FinishTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -391,6 +395,7 @@
           <EntitySetMapping Name="Notifications">
             <EntityTypeMapping TypeName="CRMModel.Notification">
               <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="TaskID" ColumnName="TaskID" />
                 <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
@@ -410,6 +415,7 @@
           <EntitySetMapping Name="Tasks">
             <EntityTypeMapping TypeName="CRMModel.Task">
               <MappingFragment StoreEntitySet="Tasks">
+                <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
                 <ScalarProperty Name="TaskId" ColumnName="TaskId" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />

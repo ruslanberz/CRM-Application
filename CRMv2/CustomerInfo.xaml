@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Müştəri haqqında məlumat" Height="866" Width="1590" WindowStartupLocation="CenterScreen">
     <Grid x:Name="mainGrid" Background="#FF0E88EB" RenderTransformOrigin="0.726,0.083">
-        <DataGrid x:Name="DgvCustomer" ItemsSource="{Binding Path=Customer}" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="594" Margin="98,144,0,0" VerticalAlignment="Top" Width="737" ColumnWidth="Auto" SelectionChanged="DgvCustomer_SelectionChanged">
+        <DataGrid x:Name="DgvCustomer" ItemsSource="{Binding Path=Customer}" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="594" Margin="98,144,0,0" VerticalAlignment="Top" Width="737"   SelectionChanged="DgvCustomer_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=id}" Width="*" Visibility="Hidden"/>
                 <DataGridTextColumn Binding="{Binding Path=CustomerName}" Width="*" Header="Müştəri" />
@@ -28,7 +28,7 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
             </Grid.Background>
             <Button x:Name="BtnSearchByText" Content="Axtar" HorizontalAlignment="Left" Margin="212,34,0,0" VerticalAlignment="Top" Width="76" Click="BtnSearchByText_Click"/>
-            <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="24" Margin="14,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
+            <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="24" Margin="18,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="71" Margin="475,68,0,0" VerticalAlignment="Top" Width="359" Background="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
             <ComboBox x:Name="cmbCustomers" HorizontalAlignment="Left" Margin="24,32,0,0" VerticalAlignment="Top" Width="193" Height="22"

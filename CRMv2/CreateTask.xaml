@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="Xatırlama əlavə et" Height="608.016" Width="538.168" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="372*"/>
+            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition Width="109*"/>
+        </Grid.ColumnDefinitions>
         <ComboBox x:Name="cmbCustomers" HorizontalAlignment="Left" Margin="165,84,0,0" VerticalAlignment="Top" Width="185" Height="28"
                  ItemsSource="{Binding Path=Customers}"
                   DisplayMemberPath="CustomerName"
@@ -14,18 +19,18 @@
                   SelectedValuePath="id"
                   />
         <Label Content="Müştərini seçin" HorizontalAlignment="Left" Margin="169,33,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Height="176" Margin="138,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244"/>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Height="176" Margin="138,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Grid.ColumnSpan="2"/>
         <DatePicker x:Name="dtpDeadline" HorizontalAlignment="Left" Margin="169,132,0,0" VerticalAlignment="Top" Width="181">
             <DatePicker.Resources>
-            <Style TargetType="DatePickerTextBox">
-                <Setter Property="Text" Value="Son icra tarixi seçin"/>
-            </Style>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Text" Value="Son icra tarixi seçin"/>
+                </Style>
             </DatePicker.Resources>
 
-            </DatePicker>
+        </DatePicker>
         <Button Content="Yarat" HorizontalAlignment="Left" Margin="203,455,0,0" VerticalAlignment="Top" Width="119" Height="35" Click="Button_Click"/>
         <Label Content="Notification əlavə edin" HorizontalAlignment="Left" Margin="138,410,0,0" VerticalAlignment="Top" Width="119"/>
-        <ComboBox x:Name="cmbNotifications" HorizontalAlignment="Left" Margin="262,410,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbNotifications" HorizontalAlignment="Left" Margin="262,410,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

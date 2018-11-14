@@ -27,6 +27,7 @@ namespace CRMv2.Models
         public System.DateTime CreationTime { get; set; }
         public System.DateTime DeadlineTime { get; set; }
         public bool isFinised { get; set; }
+        public Nullable<System.DateTime> FinishTime { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

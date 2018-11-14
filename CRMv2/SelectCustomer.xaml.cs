@@ -31,17 +31,21 @@ namespace CRMv2
         {
             foreach (Customer cm in db.Customers.ToList())
             {
-                CmbCustomers.Items.Add(cm);
+                if (cm.IsActive==true)
+                {
+                    CmbCustomers.Items.Add(cm);
+                }
+                
             }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
+        {  
             if (CmbCustomers.SelectedIndex==-1)
             {
                 MessageBox.Show("Müstərini seçməmisiniz!","Səhv",MessageBoxButton.OK,MessageBoxImage.Asterisk);
             }
-            else
+            else 
             {
                 Customer updated = CmbCustomers.SelectedItem as Customer;
                 CreateCompany cr = new CreateCompany();

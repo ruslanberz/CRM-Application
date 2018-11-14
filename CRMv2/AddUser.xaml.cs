@@ -98,7 +98,7 @@ namespace CRMv2
                 }
                 db.Users.Add(newUser);
                 db.SaveChanges();
-                MessageBox.Show("Yeni istifadəçi aradıldı!", "Status:OK", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Yeni istifadəçi yaradıldı!", "Status:OK", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
                 
 

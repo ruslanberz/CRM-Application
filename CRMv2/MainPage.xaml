@@ -118,7 +118,7 @@
             </Image>
         </Button>
         <Label Content="Task yarat" HorizontalAlignment="Left" Margin="46,651,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.461,-1.173" Width="85" Height="24"/>
-        <Button x:Name="btnTaskFinish" HorizontalAlignment="Left" Margin="44,684,0,0" VerticalAlignment="Top" Width="57" RenderTransformOrigin="-4.63,-0.312" Height="47">
+        <Button x:Name="btnTaskFinish" HorizontalAlignment="Left" Margin="44,684,0,0" VerticalAlignment="Top" Width="57" RenderTransformOrigin="-4.63,-0.312" Height="47" Click="btnTaskFinish_Click">
             <Image Source="C:\Users\User\Documents\Visual Studio 2017\Projects\CRMv2\CRMv2\task_finish.png" Height="34" Width="29">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">

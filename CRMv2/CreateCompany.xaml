@@ -7,17 +7,17 @@
         mc:Ignorable="d"
         Title="Müştəri yarat" Height="613.197" Width="364.223" Background="#FFD17373" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        <TextBox x:Name="txtCustomerName" HorizontalAlignment="Left" Height="23" Margin="125,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C"/>
-        <TextBox x:Name="txtCustomerEmail" HorizontalAlignment="Left" Height="22" Margin="125,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C"/>
-        <TextBox x:Name="txtCustomerMobile" HorizontalAlignment="Left" Height="23" Margin="125,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C"/>
-        <TextBox x:Name="txtContactPerson" HorizontalAlignment="Left" Height="23" Margin="125,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C"/>
-        <TextBox x:Name="txtOfficePhoneNumber" HorizontalAlignment="Left" Height="23" Margin="125,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C"/>
-        <Button x:Name="btn_create" Content="Müştəri yarat" HorizontalAlignment="Left" Margin="125,484,0,0" VerticalAlignment="Top" Width="120" Height="40" BorderBrush="#FFF10C0C" Background="#FFF3EFF7" Click="btnCreate_Click"/>
+        <TextBox x:Name="txtCustomerName" HorizontalAlignment="Left" Height="23" Margin="125,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C" TabIndex="1"/>
+        <TextBox x:Name="txtCustomerEmail" HorizontalAlignment="Left" Height="22" Margin="125,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C" TabIndex="6"/>
+        <TextBox x:Name="txtCustomerMobile" HorizontalAlignment="Left" Height="23" Margin="125,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C" TabIndex="5"/>
+        <TextBox x:Name="txtContactPerson" HorizontalAlignment="Left" Height="23" Margin="125,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C" TabIndex="2"/>
+        <TextBox x:Name="txtOfficePhoneNumber" HorizontalAlignment="Left" Height="23" Margin="125,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C" TabIndex="4"/>
+        <Button x:Name="btn_create" Content="Müştəri yarat" HorizontalAlignment="Left" Margin="125,484,0,0" VerticalAlignment="Top" Width="120" Height="40" BorderBrush="#FFF10C0C" Background="#FFF3EFF7" Click="btnCreate_Click" TabIndex="7"/>
         <Label Content="Müştəri haqqında məlumatlar" HorizontalAlignment="Left" Margin="101,22,0,0" VerticalAlignment="Top" Width="176"/>
         <Label Content="Şirkət adı:" HorizontalAlignment="Left" Margin="16,106,0,0" VerticalAlignment="Top"/>
         <Label Content="Əlaqəli şəxs:" HorizontalAlignment="Left" Margin="16,155,0,0" VerticalAlignment="Top"/>
         <Label Content="Ünvan:" HorizontalAlignment="Left" Margin="16,200,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCustomerAddress" HorizontalAlignment="Left" Height="88" Margin="125,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFEE1F0B"/>
+        <TextBox x:Name="txtCustomerAddress" HorizontalAlignment="Left" Height="88" Margin="125,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFEE1F0B" TabIndex="3"/>
         <Label Content="Ofis nömrəsi:" HorizontalAlignment="Left" Margin="16,316,0,0" VerticalAlignment="Top"/>
         <Label Content="Mobil nömrəsi:" HorizontalAlignment="Left" Margin="16,359,0,0" VerticalAlignment="Top"/>
         <Label Content="E-poçt:" HorizontalAlignment="Left" Margin="16,399,0,0" VerticalAlignment="Top"/>

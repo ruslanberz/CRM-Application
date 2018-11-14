@@ -49,7 +49,10 @@ namespace CRMv2
         {
             foreach (Customer cm in db.Customers.ToList())
             {
-                cmbCustomerList.Items.Add(cm);
+                if (cm.IsActive==true)
+                {
+                    cmbCustomerList.Items.Add(cm);
+                }
             }
 
 

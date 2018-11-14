@@ -12,5 +12,6 @@ namespace CRMv2.Models
         public string CreatedBy { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime FinishTime { get; set; }
+        public string Description { get; set; }
     }
 }

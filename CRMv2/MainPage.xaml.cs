@@ -51,8 +51,10 @@ namespace CRMv2
             lw.Show();
             this.Close();
         }
-        private void fillTasks()
+        public void fillTasks()
         {
+            CRMEntities dbss = new CRMEntities();
+          
             exp_1.Visibility = Visibility.Hidden;
             exp_2.Visibility = Visibility.Hidden;
             exp_3.Visibility = Visibility.Hidden;
@@ -63,7 +65,7 @@ namespace CRMv2
             exp_8.Visibility = Visibility.Hidden;
             exp_9.Visibility = Visibility.Hidden;
             int count = 0;
-            foreach (CRMv2.Models.Task t in db.Tasks.ToList())
+            foreach (CRMv2.Models.Task t in dbss.Tasks.ToList())
             { 
                 if (t.User.UserId==LoggedUserId&&t.isFinised==false)
                 {
@@ -96,6 +98,17 @@ namespace CRMv2
             if (loggedUser.RoleID==2)
             {
                 btnAddUser.IsEnabled = false;
+            }
+
+            if (loggedUser.RoleID==1)
+            {
+                btnAddUser.IsEnabled = false;
+                btnAddCompany.IsEnabled = false;
+                btnCompanyUpdate.IsEnabled = false;
+                btnCompanyDelete.IsEnabled = false;
+                btnAddComment.IsEnabled = false;
+                btnAddTask.IsEnabled = false;
+                btnTaskFinish.IsEnabled = false;
             }
         }
 
@@ -145,10 +158,11 @@ namespace CRMv2
 
         public void FillRunningTask()
         {
+            CRMEntities dbs = new CRMEntities();
             runningText.Text = "";
-            foreach (Notification nt in db.Notifications.ToList())
+            foreach (Notification nt in dbs.Notifications.ToList())
             {
-                if (nt.Task.User.UserId == loggedUser.UserId)
+                if (nt.Task.User.UserId == loggedUser.UserId&&nt.IsActive==true)
                 {
                    switch (nt.NotificationType)
                     {
@@ -182,6 +196,13 @@ namespace CRMv2
                     }
                 }
             }
+        }
+
+        private void btnTaskFinish_Click(object sender, RoutedEventArgs e)
+        {
+            CompleteTask ct = new CompleteTask(this);
+            ct.currentUser = loggedUser;
+            ct.Show(); 
         }
     }
 }

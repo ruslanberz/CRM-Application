@@ -29,6 +29,7 @@
     <EntitySetMapping Name="Notifications">
       <EntityTypeMapping TypeName="CRMModel.Notification">
         <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
           <ScalarProperty Name="TaskID" ColumnName="TaskID" />
           <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
@@ -48,6 +49,7 @@
     <EntitySetMapping Name="Tasks">
       <EntityTypeMapping TypeName="CRMModel.Task">
         <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
           <ScalarProperty Name="TaskId" ColumnName="TaskId" />
           <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />

@@ -30,6 +30,7 @@
     <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TaskID" Type="int" Nullable="false" />
     <Property Name="NotificationType" Type="tinyint" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -51,6 +52,7 @@
     <Property Name="CreationTime" Type="datetime" Nullable="false" />
     <Property Name="DeadlineTime" Type="datetime" Nullable="false" />
     <Property Name="isFinised" Type="bit" Nullable="false" />
+    <Property Name="FinishTime" Type="datetime" />
   </EntityType>
   <EntityType Name="Users">
     <Key>

@@ -77,6 +77,7 @@ namespace CRMv2
                 {
                     
                     MessageBox.Show("Uğur!", "Status : OK", MessageBoxButton.OK, MessageBoxImage.Information);
+                    mp.fillTasks();
                     this.Close();
                     
                 }
@@ -86,11 +87,13 @@ namespace CRMv2
                     Notification nt = new Notification();
                     nt.TaskID = t.TaskId;
                     nt.NotificationType = Convert.ToByte(cmbNotifications.SelectedIndex);
+                    nt.IsActive = true;
                     
                     db.Notifications.Add(nt);
                     db.SaveChanges();
                     MessageBox.Show("Uğur!", "Status : OK", MessageBoxButton.OK, MessageBoxImage.Information);
                     mp.FillRunningTask();
+                    mp.fillTasks();
                     this.Close();
                 }
             }

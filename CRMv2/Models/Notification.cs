@@ -17,6 +17,7 @@ namespace CRMv2.Models
         public int NotificationId { get; set; }
         public int TaskID { get; set; }
         public byte NotificationType { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     
         public virtual Task Task { get; set; }
     }

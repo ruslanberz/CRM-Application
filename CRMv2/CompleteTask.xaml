@@ -6,15 +6,43 @@
         xmlns:local="clr-namespace:CRMv2"
         mc:Ignorable="d"
         Title="Task təsdiqi
-        " Height="730.077" Width="988.168">
+        " Height="730.077" Width="988.168" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="51,103,0,0" VerticalAlignment="Top" Width="192"/>
-        <Label Content="Müştərini seçin" HorizontalAlignment="Left" Margin="51,45,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
-        <DataGrid HorizontalAlignment="Left" Height="430" Margin="40,165,0,0" VerticalAlignment="Top" Width="897"
-                  
-                  
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="146*"/>
+            <ColumnDefinition Width="99*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="CmbCustomers" HorizontalAlignment="Left" Margin="51,103,0,0" VerticalAlignment="Top" Width="192"
+                  ItemsSource="{Binding Path=Customer}"
+                  DisplayMemberPath="CustomerName"
+                  SelectedValue="{Binding Path=Customer}"
+                  SelectedValuePath="id" SelectionChanged="CmbCustomers_SelectionChanged"
                   />
-        <Button x:Name="btnComplete" Content="Təsdiqlə" HorizontalAlignment="Left" Margin="766,636,0,0" VerticalAlignment="Top" Width="107" Height="41" FontWeight="Bold"/>
+        <Label Content="Müştərini seçin" HorizontalAlignment="Left" Margin="51,45,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
+        <DataGrid x:Name="dgvTasks" HorizontalAlignment="Left" Height="430" Margin="40,165,0,0" VerticalAlignment="Top" Width="897"
+                  ItemsSource="{Binding Path=vwTask}"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False" Grid.ColumnSpan="2">
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=id}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding Path=CreatedBy}" Width="*" Header="Taskı yaradan istifadəçi" />
+                <DataGridTextColumn Binding="{Binding Path=StartTime,StringFormat={}{0:dd/MM/yyyy}}" Width="*" Header="Yaranma tarixi" />
+                <DataGridTextColumn Binding="{Binding Path=FinishTime,StringFormat={}{0:dd/MM/yyyy}}" Width="*" Header="Son icra tarixi"/>
+                <DataGridTextColumn Binding="{Binding Path=Description}" Width="*" Header="Ətraflı"/>
+
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+        </DataGrid>
+        <Button x:Name="btnComplete" Content="Təsdiqlə" HorizontalAlignment="Left" Margin="182,636,0,0" VerticalAlignment="Top" Width="107" Height="41" FontWeight="Bold" Grid.Column="1" Click="btnComplete_Click"/>
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="336,102,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="156"/>
+        <Button Content="Axtar" HorizontalAlignment="Left" Margin="521,102,0,0" VerticalAlignment="Top" Width="103" Grid.ColumnSpan="2" Click="Button_Click"/>
 
     </Grid>
 </Window>

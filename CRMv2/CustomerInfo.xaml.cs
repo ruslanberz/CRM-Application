@@ -32,7 +32,10 @@ namespace CRMv2
         {
             foreach (Customer cst in db.Customers.ToList())
             {
-                cmbCustomers.Items.Add(cst);
+                if (cst.IsActive==true)
+                {
+                    cmbCustomers.Items.Add(cst);
+                }
             }
         }
 
@@ -42,7 +45,7 @@ namespace CRMv2
             string search = txtSearch.Text;
             foreach (Customer c in db.Customers.ToList())
             {
-                if (c.CustomerName.ToLower().Contains(search.ToLower()))
+                if (c.CustomerName.ToLower().Contains(search.ToLower())&&c.IsActive==true)
                 {
                    
                     
