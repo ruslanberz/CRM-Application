@@ -112,3 +112,7 @@ C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\Custom
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CustomerInfo.baml
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\DeleteCustomer.g.cs
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\DeleteCustomer.baml
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CreateTask.g.cs
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CreateTask.baml
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CompleteTask.g.cs
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CompleteTask.baml

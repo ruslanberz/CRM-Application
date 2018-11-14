@@ -80,5 +80,7 @@ namespace CRMv2
             CustomerInfo ci = new CustomerInfo();
             ci.Show();
         }
+
+        
     }
 }

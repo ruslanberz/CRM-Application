@@ -104,7 +104,7 @@
             </Image>
         </Button>
         <Label Content="Müştəri yarat&#xA;" HorizontalAlignment="Left" Margin="33,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.461,-1.173" Width="85" Height="24"/>
-        <Button x:Name="btnAddTask" HorizontalAlignment="Left" Margin="44,595,0,0" VerticalAlignment="Top" Width="57" Height="50">
+        <Button x:Name="btnAddTask" HorizontalAlignment="Left" Margin="44,595,0,0" VerticalAlignment="Top" Width="57" Height="50" Click="btnAddTask_Click">
             <Image Source="C:\Users\User\Documents\Visual Studio 2017\Projects\CRMv2\CRMv2\task_add.png" Width="44" Height="31">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -292,6 +292,23 @@
         </Button>
         <Label Content="Hesabat hazırla" HorizontalAlignment="Left" Margin="32,826,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.461,-1.173" Width="85" Height="24"/>
         <Label Content="Rəy əlavə et" HorizontalAlignment="Left" Margin="42,568,0,0" VerticalAlignment="Top"/>
-
+        <Canvas x:Name="Canvas" Background="Transparent" Height="25"
+           VerticalAlignment="Top" Margin="128,838,128,-7">
+        <TextBlock x:Name="runningText" Margin="0,7,0,0" VerticalAlignment="Bottom" FontSize="15"  FontWeight="Bold" Foreground="#555"
+                       Text="Тестовый текст" Canvas.Right="0">
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="TextBlock.Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" From="1300" To="-750" 
+                                                     Duration="0:0:30" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
+        </Canvas>
     </Grid>
 </Window>

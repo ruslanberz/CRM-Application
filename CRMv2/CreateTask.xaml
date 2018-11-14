@@ -1,0 +1,31 @@
+﻿<Window x:Class="CRMv2.CreateTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRMv2"
+        mc:Ignorable="d"
+        Title="Xatırlama əlavə et" Height="608.016" Width="538.168" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ComboBox x:Name="cmbCustomers" HorizontalAlignment="Left" Margin="165,84,0,0" VerticalAlignment="Top" Width="185" Height="28"
+                 ItemsSource="{Binding Path=Customers}"
+                  DisplayMemberPath="CustomerName"
+                  SelectedValue="{Binding Path=Customers}"
+                  SelectedValuePath="id"
+                  />
+        <Label Content="Müştərini seçin" HorizontalAlignment="Left" Margin="169,33,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Height="176" Margin="138,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244"/>
+        <DatePicker x:Name="dtpDeadline" HorizontalAlignment="Left" Margin="169,132,0,0" VerticalAlignment="Top" Width="181">
+            <DatePicker.Resources>
+            <Style TargetType="DatePickerTextBox">
+                <Setter Property="Text" Value="Son icra tarixi seçin"/>
+            </Style>
+            </DatePicker.Resources>
+
+            </DatePicker>
+        <Button Content="Yarat" HorizontalAlignment="Left" Margin="203,455,0,0" VerticalAlignment="Top" Width="119" Height="35" Click="Button_Click"/>
+        <Label Content="Notification əlavə edin" HorizontalAlignment="Left" Margin="138,410,0,0" VerticalAlignment="Top" Width="119"/>
+        <ComboBox x:Name="cmbNotifications" HorizontalAlignment="Left" Margin="262,410,0,0" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

@@ -74,12 +74,19 @@
     <Compile Include="AddComment.xaml.cs">
       <DependentUpon>AddComment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CompleteTask.xaml.cs">
+      <DependentUpon>CompleteTask.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CreateTask.xaml.cs">
+      <DependentUpon>CreateTask.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomerInfo.xaml.cs">
       <DependentUpon>CustomerInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="DeleteCustomer.xaml.cs">
       <DependentUpon>DeleteCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\vwTask.cs" />
     <Compile Include="SelectCustomer.xaml.cs">
       <DependentUpon>SelectCustomer.xaml</DependentUpon>
     </Compile>
@@ -91,7 +98,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CompleteTask.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateTask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

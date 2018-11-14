@@ -45,7 +45,7 @@ namespace CRMv2
             Customer deletedCustomer = cmbCustomers.SelectedItem as Customer;
             deletedCustomer.IsActive = false;
             db.SaveChanges();
-            MessageBox.Show("Uğur");
+            MessageBox.Show("Müştıri uğurla silindi!","Status: OK",MessageBoxButton.OK,MessageBoxImage.Information);
             this.Close();
 
         }

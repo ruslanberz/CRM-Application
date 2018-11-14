@@ -40,6 +40,8 @@ namespace CRMv2
             FillUserInfo();
             CheckUserControls();
             fillTasks();
+            runningText.Text = "";
+            FillRunningTask();
 
         }
 
@@ -68,6 +70,7 @@ namespace CRMv2
                     count++;
                   Expander expander=  ((Expander)FindName("exp_" + count));
                     expander.Visibility= Visibility.Visible;
+                    expander.IsExpanded = true;
                     expander.Header ="Müştəri :  "+ t.Customer.CustomerName;
                     TextBox txt = ((TextBox)FindName("txtExp_" + count));
                     txt.Text = t.Description;
@@ -131,6 +134,54 @@ namespace CRMv2
             AddComment ac = new AddComment();
             ac.currentUser = loggedUser;
             ac.Show();
+        }
+
+        private void btnAddTask_Click(object sender, RoutedEventArgs e)
+        {
+            CreateTask ct = new CreateTask(this);
+            ct.currentUSer = loggedUser;
+            ct.Show();
+        }
+
+        public void FillRunningTask()
+        {
+            runningText.Text = "";
+            foreach (Notification nt in db.Notifications.ToList())
+            {
+                if (nt.Task.User.UserId == loggedUser.UserId)
+                {
+                   switch (nt.NotificationType)
+                    {
+                        case 1:
+                            
+                            if (nt.Task.DeadlineTime.Subtract(DateTime.Now).TotalHours<=24)
+                            {
+                                runningText.Text += nt.Task.Customer.CustomerName + " : " + nt.Task.Description+"      "; 
+                            }
+                        break;
+                        case 2:
+
+                            if (nt.Task.DeadlineTime.Subtract(DateTime.Now).TotalHours>24&& nt.Task.DeadlineTime.Subtract(DateTime.Now).TotalHours<72)
+                            {
+                                runningText.Text += nt.Task.Customer.CustomerName + " : " + nt.Task.Description + "      ";
+                            }
+                            break;
+                        case 3:
+
+                            if (nt.Task.DeadlineTime.Subtract(DateTime.Now).TotalHours <= 168)
+                            {
+                                runningText.Text += nt.Task.Customer.CustomerName + " : " + nt.Task.Description + "      ";
+                            }
+                            break;
+                        case 4:
+                            runningText.Text += nt.Task.Customer.CustomerName + " : " + nt.Task.Description + "      ";
+
+
+                            break;
+
+                    }
+                }
+            }
         }
     }
 }
