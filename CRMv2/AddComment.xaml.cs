@@ -30,7 +30,7 @@ namespace CRMv2
 
         private void txtComment_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtComment.Text.Length==501)
+            if (txtComment.Text.Length>500)
             {
                 txtComment.Text = txtComment.Text.Substring(0, 500);
                 txtComment.SelectionStart = txtComment.Text.Length;
