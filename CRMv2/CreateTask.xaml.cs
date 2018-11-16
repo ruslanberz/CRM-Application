@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CRMv2.Models;
+using System.IO;
 
 namespace CRMv2
 {
@@ -23,6 +24,8 @@ namespace CRMv2
         CRMEntities db = new CRMEntities();
         MainPage mp;
      public   User currentUSer = new User();
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
+
         public CreateTask(MainPage main)
         {
             InitializeComponent();
@@ -61,7 +64,13 @@ namespace CRMv2
             if (dtpDeadline.SelectedDate == null)
             {
                 MessageBox.Show("Son icra tarixi seçin!","Status : Error",MessageBoxButton.OK,MessageBoxImage.Error);
-            }  else
+                using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} Fail: User {2} failed to create new task: Deadline time not specified ", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUSer.Username);
+                }
+            }
+            else
             {
                 Models.Task t = new Models.Task();
                 t.CreationTime = DateTime.Now;
@@ -78,6 +87,11 @@ namespace CRMv2
                     
                     MessageBox.Show("Uğur!", "Status : OK", MessageBoxButton.OK, MessageBoxImage.Information);
                     mp.fillTasks();
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Success: User {2} created task related to company: {3}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUSer.Username,t.Customer.CustomerName );
+                    }
                     this.Close();
                     
                 }
@@ -94,6 +108,14 @@ namespace CRMv2
                     MessageBox.Show("Uğur!", "Status : OK", MessageBoxButton.OK, MessageBoxImage.Information);
                     mp.FillRunningTask();
                     mp.fillTasks();
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Success: User {2} created task relatedto company: {3}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUSer.Username, t.Customer.CustomerName);
+                        tw.WriteLine("{0} {1} Success: User {2} created noticication for task related to company: {3}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUSer.Username, t.Customer.CustomerName);
+
+                    }
                     this.Close();
                 }
             }

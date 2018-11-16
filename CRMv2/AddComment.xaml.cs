@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CRMv2.Models;
+using System.IO;
 
 namespace CRMv2
 {
@@ -22,6 +23,8 @@ namespace CRMv2
     {
         public User currentUser;
         CRMEntities db = new CRMEntities();
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
+
         public AddComment()
         {
             InitializeComponent();
@@ -67,6 +70,12 @@ namespace CRMv2
             cmnt.Text = txtComment.Text;
             db.Comments.Add(cmnt);
             db.SaveChanges();
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Success:  User {2} add comment for company: {3}", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), currentUser.Username, cstmSelected.CustomerName);
+
+            }
             MessageBox.Show("Rəy uğurla əlavə edildi", "Status:OK", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CRMv2.Models;
+using System.IO;
 
 namespace CRMv2
 {
@@ -23,6 +24,7 @@ namespace CRMv2
         public int LoggedUserId = 0;
         User loggedUser;
         CRMEntities db = new CRMEntities();
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
         public MainPage()
         {
             InitializeComponent();
@@ -48,6 +50,11 @@ namespace CRMv2
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow lw = new LoginWindow();
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} User {2} logged out", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(),loggedUser.Username);
+            }
             lw.Show();
             this.Close();
         }
@@ -89,6 +96,7 @@ namespace CRMv2
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
             AddUser add = new AddUser();
+            add.CurrentUser = loggedUser;
             add.Show();
 
         }
@@ -114,12 +122,21 @@ namespace CRMv2
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} User {2} logged out", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), loggedUser.Username);
+
+                tw.WriteLine("Application Close", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString());
+            }
             Environment.Exit(0);
         }
 
         private void btnAddCompany_Click(object sender, RoutedEventArgs e)
         {
             CreateCompany cc = new CreateCompany();
+            cc.currentUser = loggedUser;
             cc.ShowDialog();
         }
 
@@ -132,6 +149,7 @@ namespace CRMv2
         private void btnDeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
             DeleteCustomer dc = new DeleteCustomer();
+            dc.currentUser= loggedUser;
             dc.Show();
         }
 

@@ -103,7 +103,7 @@
                 </Image.Style>
             </Image>
         </Button>
-        <Label Content="Müştəri yarat&#xA;" HorizontalAlignment="Left" Margin="33,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.461,-1.173" Width="85" Height="24"/>
+        <Label Content="Müştəri yarat&#xA;" HorizontalAlignment="Left" Margin="37,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.461,-1.173" Width="85" Height="24"/>
         <Button x:Name="btnAddTask" HorizontalAlignment="Left" Margin="44,595,0,0" VerticalAlignment="Top" Width="57" Height="50" Click="btnAddTask_Click">
             <Image Source="C:\Users\User\Documents\Visual Studio 2017\Projects\CRMv2\CRMv2\task_add.png" Width="44" Height="31">
                 <Image.Style>

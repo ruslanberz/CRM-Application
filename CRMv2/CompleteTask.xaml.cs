@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CRMv2.Models;
+using System.IO;
 
 namespace CRMv2
 {
@@ -22,6 +23,7 @@ namespace CRMv2
     {
         MainPage mp;
        public User currentUser = new User();
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
         CRMEntities db = new CRMEntities();
         public CompleteTask(MainPage main)
         {
@@ -131,11 +133,22 @@ namespace CRMv2
                     forComplete = db.Tasks.FirstOrDefault(t => t.TaskId == complete.id);
                     forComplete.FinishTime = DateTime.Now.Date;
                     forComplete.isFinised = true;
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Success: User {2} completed the task for company: {3}, created  by user: {4}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username,forComplete.Customer.CustomerName,forComplete.User.Username);
+                    }
                     Notification nt = new Notification();
                     nt = db.Notifications.FirstOrDefault(n => n.TaskID == forComplete.TaskId);
                     if (nt!=null)
                     {
                         nt.IsActive = false;
+                        using (TextWriter tw = new StreamWriter(path, true))
+                        {
+                            tw.WriteLine("{0} {1} Success: User {2} deleted the notification of task for company: {3}, created  by user: {4}", DateTime.Now.ToLongTimeString(),
+                    DateTime.Now.ToShortDateString(), currentUser.Username, forComplete.Customer.CustomerName, forComplete.User.Username);
+                        }
+
                     } 
                     db.SaveChanges();
                     mp.FillRunningTask();

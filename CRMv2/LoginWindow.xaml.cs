@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 using CRMv2.Models;
 
 namespace CRMv2
@@ -24,9 +25,11 @@ namespace CRMv2
 
         CRMEntities db = new CRMEntities();
         MainPage main = new MainPage();
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public LoginWindow()
         {
             InitializeComponent();
+            LogInit();
             
         }
 
@@ -55,16 +58,26 @@ namespace CRMv2
                         main.LoggedUserId = u.UserId;
                         main.Show();
                         isUser = true;
-
+                        using (TextWriter tw = new StreamWriter(path, true))
+                        {
+                            tw.WriteLine("{0} {1} User {2} successfully logged in", DateTime.Now.ToLongTimeString(),
+                    DateTime.Now.ToShortDateString(), u.Username);
+                        }
                         this.Close();
 
 
 
                     }
+                  
                 }
                 if (!isUser)
                 {
                     MessageBox.Show("İstifadəçi adl/şifrə yanlışdır", "Səhv", MessageBoxButton.OK, MessageBoxImage.Information);
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Unsuccessfull attempt to logon", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString());
+                    }
                 }
 
             }
@@ -72,6 +85,11 @@ namespace CRMv2
       
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Application Close", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString());
+            }
             Environment.Exit(0);
         }
 
@@ -81,6 +99,27 @@ namespace CRMv2
             ci.Show();
         }
 
-        
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+           
+
+        }
+
+        private void LogInit()
+        {
+            path = path + @"\CRMlogs.log";
+            if (!File.Exists(path))
+            {
+                File.Create(path).Dispose();
+            }
+            else
+            {
+                using (TextWriter tw = new StreamWriter(path,true))
+                {
+                    tw.WriteLine("{0} {1} Application Open", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString());
+                }
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CRMv2.Models;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace CRMv2
 {
@@ -21,7 +22,9 @@ namespace CRMv2
     /// </summary>
     public partial class CreateCompany : Window
     {
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
         public Customer updCustomer = new Customer();
+        public User currentUser = new User();
         public bool isUpdated = false;
         
         public CreateCompany()
@@ -48,45 +51,70 @@ namespace CRMv2
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             CRMEntities db = new CRMEntities();
-            //if (!isUpdated)
-            //{
-            //    foreach (Customer item in db.Customers.ToList())
-            //    {
-            //        if (item.CustomerName == txtCustomerName.Text)
-            //        {
-            //            MessageBox.Show("Qeyd olunan müştəri adı mövcuddur!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
-            //            return;
-            //        }
-            //    }
-            //}
+           
 
             if (string.IsNullOrEmpty(txtCustomerName.Text))
             {
                 MessageBox.Show("Şirkət adı boş ola bilməz!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} User {2} failed to create new/update user : Company name can not be empty", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUser.Username);
+                }
             }
             else if (string.IsNullOrEmpty(txtContactPerson.Text))
             {
                 MessageBox.Show("Əlaqəli şəxs adı boş ola bilməz!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} User {2} failed to create new/update user : Contact person can not be empty", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUser.Username);
+                }
             }
             else if (string.IsNullOrEmpty(txtCustomerAddress.Text))
             {
                 MessageBox.Show("Ünvanı qeyd edin!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} User {2} failed to create new/update user : Company address can not be empty", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUser.Username);
+                }
             }
             else if (string.IsNullOrEmpty(txtOfficePhoneNumber.Text))
             {
                 MessageBox.Show("Ofis nömrəsini daxil edin!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} User {2} failed to create new/update user : Office phone number can not be empty", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUser.Username);
+                }
             }
             else if (string.IsNullOrEmpty(txtCustomerMobile.Text))
             {
                 MessageBox.Show("Mobil nömrəsini daxil edin!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} User {2} failed to create new/update user : Company mobile number can not be empty", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUser.Username);
+                }
             }
             else if (string.IsNullOrEmpty(txtCustomerEmail.Text))
             {
                 MessageBox.Show("E-poct daxil edin", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} User {2} failed to create new/update user : Company email address can not be empty", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUser.Username);
+                }
             }
             else if (!IsValidEmail(txtCustomerEmail.Text))
             {
-                MessageBox.Show("E-poct düzgün formatda daxil edilməyib!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("E-poct düzgün formatda daxil edilməyib!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error); using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} User {2} failed to create new/update user : Wrong company email format", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUser.Username);
+                }
+
             }
             else if (db.Customers.FirstOrDefault(cst=>cst.CustomerName.ToLower()==txtCustomerName.Text.ToLower())!=null)
             {
@@ -102,11 +130,21 @@ namespace CRMv2
                     cst.Email = txtCustomerEmail.Text;
                     cst.IsActive = true;
                     db.SaveChanges();
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} User {2} activated old Company entry for {3} and updated company info", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username,cst.CustomerName);
+                    }
                     this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Müştəri artiq müvcuddur!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} User {2} failed to create new user : Company already exist", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username);
+                    }
                 }
 
                 
@@ -135,6 +173,11 @@ namespace CRMv2
                     forupdate.Email = txtCustomerEmail.Text;
                     db.SaveChanges();
                     MessageBox.Show("Müştəri məlumatı uğurla yeniləndi!", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1}Success:  User {2} successfully updated {3} company info", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username, forupdate.CustomerName);
+                    }
                     isUpdated = false;
                 }
                 else {
@@ -142,7 +185,12 @@ namespace CRMv2
                     db.Customers.Add(nc);
                     db.SaveChanges();
                     MessageBox.Show("Müştəri uğurla yaradıldı!", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
-                    
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Success: User {2} successfully created new company: {3}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username , nc.CustomerName);
+                    }
+
                 }
                 this.Close();
             }
