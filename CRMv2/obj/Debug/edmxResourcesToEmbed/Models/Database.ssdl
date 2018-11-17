@@ -43,6 +43,7 @@
     <Property Name="Administration" Type="bit" Nullable="false" />
     <Property Name="Moderation" Type="bit" Nullable="false" />
     <Property Name="CanView" Type="bit" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="Tasks">
     <Key>

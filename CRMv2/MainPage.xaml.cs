@@ -222,5 +222,11 @@ namespace CRMv2
             ct.currentUser = loggedUser;
             ct.Show(); 
         }
+
+        private void btnReport_Click(object sender, RoutedEventArgs e)
+        {
+            Report rp = new Report(loggedUser);
+            rp.Show();
+        }
     }
 }

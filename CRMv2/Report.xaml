@@ -4,37 +4,51 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMv2"
-        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" x:Name="txtCreatedTsByAll" x:Class="CRMv2.Report"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" x:Class="CRMv2.Report"
         mc:Ignorable="d"
-        Title="Report" Height="854" Width="1500" WindowStartupLocation="CenterScreen">
+        Title="Report" Height="822" Width="1590
+    " WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid Margin="0,0,0,-3">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="23*"/>
-            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="262*"/>
+            <ColumnDefinition Width="529*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Hesabat" Grid.Column="1" HorizontalAlignment="Left" Margin="232,26,0,0" VerticalAlignment="Top" Width="184" FontWeight="Bold" FontSize="24"/>
-        <Grid HorizontalAlignment="Left" Height="307" Margin="76,469,0,0" VerticalAlignment="Top" Width="378" Background="#FF29B6F6">
+        <Label Content="H e s a b a t" Grid.Column="1" HorizontalAlignment="Left" Margin="232,26,0,0" VerticalAlignment="Top" Width="214" FontWeight="Bold" FontSize="36" Height="54"/>
+        <Grid x:Name="grdAllStats"  Height="265" Margin="78,511,0,0" VerticalAlignment="Top" Background="#FF29B6F6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="86*"/>
                 <ColumnDefinition Width="111*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Bütün istifadəçilər tərəfindən yaradılmış task sayı :" HorizontalAlignment="Left" Margin="23,41,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="15"/>
-            <Label Content="Bütün istifadəçilər tərəfindən  qecikdirilmiş task sayı:" HorizontalAlignment="Left" Margin="25,118,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="306"/>
-            <Label Content="Yeni istifadəçi sayı :" HorizontalAlignment="Left" Margin="28,150,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="277"/>
-            <Label Content="Yeni müştəri sayı :" HorizontalAlignment="Left" Margin="28,177,0,0" VerticalAlignment="Top" Width="102"/>
-            <Label Content="Silinmiş müştəri sayı :" HorizontalAlignment="Left" Margin="28,204,0,0" VerticalAlignment="Top"/>
-            <Label Content="Bütün istifadəçilər tərəfindən təsdiq edilmiş task sayı :" HorizontalAlignment="Left" Margin="24,84,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+            <Label Content="Bütün istifadəçilər tərəfindən yaradılmış task sayı :" HorizontalAlignment="Left" Margin="23,41,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontSize="15" FontWeight="Bold"/>
+            <Label Content="Bütün istifadəçilər tərəfindən  qecikdirilmiş task sayı :" HorizontalAlignment="Left" Margin="21,94,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="415" FontWeight="Bold" FontSize="15"/>
+            <Label Content="Yeni istifadəçi sayı :" HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="277" FontSize="15" FontWeight="Bold"/>
+            <Label Content="Yeni müştəri sayı :" HorizontalAlignment="Left" Margin="20,145,0,0" VerticalAlignment="Top" Width="177" FontSize="15" FontWeight="Bold"/>
+            <Label Content="Silinmiş müştəri sayı :" HorizontalAlignment="Left" Margin="20,170,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label Content="Bütün istifadəçilər tərəfindən təsdiq edilmiş task sayı :" HorizontalAlignment="Left" Margin="22,68,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="15"/>
+            <Label x:Name="lblCompletedTaskCount" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="213,68,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblDelayedTaskAll" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="209,95,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblNewUserCount" Content="0" HorizontalAlignment="Left" Margin="162,120,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblNewCustomerCount" Content="0" HorizontalAlignment="Left" Margin="150,146,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblDeletedCustomerCount" Content="0" HorizontalAlignment="Left" Margin="180,170,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblCreatedTaskCount" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="189,42,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label  Content="Yeni rəy sayı :" HorizontalAlignment="Left" Margin="21,194,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblNewCommentCount" Content="0" HorizontalAlignment="Left" Margin="122,194,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="15"/>
+            <Label Content="Yeni xatırlama sayı :" HorizontalAlignment="Left" Margin="22,217,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblNewNotificationCount" Content="0" HorizontalAlignment="Left" Margin="168,217,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
         </Grid>
-        <Grid HorizontalAlignment="Left" Height="307" Margin="76,110,0,0" VerticalAlignment="Top" Width="378" Background="#FF29B6F6">
+        <Grid x:Name="grdCurrentUserStats" Height="229" Margin="78,110,0,0" VerticalAlignment="Top" Background="#FF29B6F6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="535*"/>
                 <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="txtCreatedTsBySelf" Content="Cari istifadəçi tərəfindən yaradılmış task sayı :" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="316" Height="26" FontSize="15"/>
-            <Label Content="Cari istifadəçi tərəfindən təsdiq edilmiş task sayı :" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="284" Height="22"/>
-            <Label Content="Cari istifadəçi tərəfindən  qecikdirilmiş task sayı:" HorizontalAlignment="Left" Margin="12,88,0,0" VerticalAlignment="Top" Height="22" Width="249"/>
+            <Label x:Name="txtCreatedTsBySelf" Content="Cari istifadəçi tərəfindən yaradılmış task sayı :" HorizontalAlignment="Left" Margin="20,68,0,0" VerticalAlignment="Top" Width="348" Height="26" FontSize="15" FontWeight="Bold"/>
+            <Label Content="Cari istifadəçi tərəfindən təsdiq edilmiş task sayı :" HorizontalAlignment="Left" Margin="20,99,0,0" VerticalAlignment="Top" Width="366" Height="29" FontSize="15" FontWeight="Bold"/>
+            <Label Content="Cari istifadəçi tərəfindən  qecikdirilmiş task sayı :" HorizontalAlignment="Left" Margin="20,128,0,0" VerticalAlignment="Top" Height="37" Width="366" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblUserCreatedTasks" Content="0" HorizontalAlignment="Left" Margin="348,69,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblUserCompletedTasks" Content="0" HorizontalAlignment="Left" Margin="372,100,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+            <Label x:Name="lblUserIncompletedTasks" Content="0" HorizontalAlignment="Left" Margin="369,129,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
         </Grid>
-        <dxc:ChartControl x:Name="ChrtMain" Grid.Column="1" HorizontalAlignment="Left" Margin="10,308,0,0" VerticalAlignment="Top" Height="468" Width="945">
+        <dxc:ChartControl x:Name="ChrtMain" Grid.Column="1" HorizontalAlignment="Left" Margin="98,308,0,0" VerticalAlignment="Top" Height="468" Width="894">
             <dxc:ChartControl.Legends>
                 <dxc:Legend/>
             </dxc:ChartControl.Legends>
@@ -92,10 +106,49 @@
                 </dxc:BarSideBySideSeries2D>
             </dxc:XYDiagram2D>
         </dxc:ChartControl>
-        <DatePicker Grid.Column="1" HorizontalAlignment="Left" Margin="69,110,0,0" VerticalAlignment="Top" Width="145"/>
-        <DatePicker Grid.Column="1" HorizontalAlignment="Left" Margin="282,110,0,0" VerticalAlignment="Top" Width="134"/>
-        <Label Content="Cari istifadəçinin göstəriciləri" HorizontalAlignment="Left" Margin="136,72,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="196,441,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <DatePicker x:Name="dtpStartTime" Grid.Column="1" HorizontalAlignment="Left" Margin="98,110,0,0" VerticalAlignment="Top" Width="154" Height="24">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Text" Value="Başlanğıc tarixi seçin"/>
+                </Style>
+            </DatePicker.Resources>
+
+        </DatePicker>
+        <DatePicker x:Name="dtpFinishTime" Grid.Column="1" HorizontalAlignment="Left" Margin="278,110,0,0" VerticalAlignment="Top" Width="154" Height="24">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Text" Value="Son tarixi seçin"/>
+                </Style>
+            </DatePicker.Resources>
+
+        </DatePicker>
+        <Button x:Name="btnSearch" Content="Göstər" Grid.Column="1" HorizontalAlignment="Left" Margin="473,110,0,0" VerticalAlignment="Top" Width="96" Click="btnSearch_Click"/>
+        <Button x:Name="btn_MonthlyReport" Content="Aylıq hesabat" Grid.Column="1" HorizontalAlignment="Left" Margin="593,110,0,0" VerticalAlignment="Top" Width="97" Click="btn_MonthlyReport_Click"/>
+        <dxc:ChartControl x:Name="chrtUser" Grid.Column="1" HorizontalAlignment="Left" Margin="98,308,0,0" VerticalAlignment="Top" Height="468" Width="894" Visibility="Hidden" >
+            <dxc:ChartControl.Legends>
+                <dxc:Legend/>
+            </dxc:ChartControl.Legends>
+            <dxc:XYDiagram2D>
+                <dxc:BarSideBySideSeries2D DisplayName="Taskların statistikası" LabelsVisibility="True">
+                    <dxc:BarSideBySideSeries2D.Model>
+                        <dxc:Quasi3DBar2DModel/>
+                    </dxc:BarSideBySideSeries2D.Model>
+                    <dxc:SeriesPoint x:Name="chrtUCreatedTasks" Argument="A" Value="0"/>
+                </dxc:BarSideBySideSeries2D>
+                <dxc:BarSideBySideSeries2D DisplayName="Bütün tasklar" LabelsVisibility="True">
+                    <dxc:BarSideBySideSeries2D.Model>
+                        <dxc:Quasi3DBar2DModel/>
+                    </dxc:BarSideBySideSeries2D.Model>
+                    <dxc:SeriesPoint x:Name="chrtUCompletedTasks" Argument="A" Value="0"/>
+                </dxc:BarSideBySideSeries2D>
+                <dxc:BarSideBySideSeries2D DisplayName="Vaxtında bitirilməmiş tasklar" LabelsVisibility="True">
+                    <dxc:BarSideBySideSeries2D.Model>
+                        <dxc:Quasi3DBar2DModel/>
+                    </dxc:BarSideBySideSeries2D.Model>
+                    <dxc:SeriesPoint x:Name="chrtUFailedTasks" Argument="A" Value="0"/>
+                </dxc:BarSideBySideSeries2D>
+            </dxc:XYDiagram2D>
+        </dxc:ChartControl>
 
     </Grid>
 </Window>

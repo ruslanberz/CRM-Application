@@ -277,7 +277,7 @@
         <Label Content="Müştərilər" HorizontalAlignment="Left" Margin="46,296,0,0" VerticalAlignment="Top"/>
         <Label Content="haqqında məlumat" HorizontalAlignment="Left" Margin="23,404,0,0" VerticalAlignment="Top"/>
         <Label Content="Müştərini sil" HorizontalAlignment="Left" Margin="40,487,0,0" VerticalAlignment="Top" RenderTransformOrigin="-8.461,-1.173" Width="85" Height="24"/>
-        <Button x:Name="btnTaskFinish_Copy" HorizontalAlignment="Left" Margin="44,770,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="-4.63,-0.312" Height="47">
+        <Button x:Name="btnReport" HorizontalAlignment="Left" Margin="44,770,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="-4.63,-0.312" Height="47" Click="btnReport_Click" >
             <Image Source="C:\Users\User\Documents\Visual Studio 2017\Projects\CRMv2\CRMv2\report.png" Height="34" Width="29">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">

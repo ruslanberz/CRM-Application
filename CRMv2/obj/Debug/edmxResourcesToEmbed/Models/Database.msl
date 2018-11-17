@@ -42,6 +42,7 @@
     <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="CRMModel.Role">
         <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="Administration" ColumnName="Administration" />
           <ScalarProperty Name="Moderation" ColumnName="Moderation" />

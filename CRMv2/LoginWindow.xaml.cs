@@ -95,8 +95,7 @@ namespace CRMv2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Report r = new Report();
-            r.Show();
+            
         }
 
      

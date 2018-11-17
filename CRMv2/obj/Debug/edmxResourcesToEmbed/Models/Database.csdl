@@ -49,6 +49,7 @@
     <Property Name="Moderation" Type="Boolean" Nullable="false" />
     <Property Name="CanView" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Task">
     <Key>

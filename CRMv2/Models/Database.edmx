@@ -48,6 +48,7 @@
           <Property Name="Administration" Type="bit" Nullable="false" />
           <Property Name="Moderation" Type="bit" Nullable="false" />
           <Property Name="CanView" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Tasks">
           <Key>
@@ -232,6 +233,7 @@
           <Property Name="Moderation" Type="Boolean" Nullable="false" />
           <Property Name="CanView" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -416,6 +418,7 @@
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="CRMModel.Role">
               <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Administration" ColumnName="Administration" />
                 <ScalarProperty Name="Moderation" ColumnName="Moderation" />
