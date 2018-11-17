@@ -135,6 +135,7 @@ namespace CRMv2
                 newUser.Username = txtUsername.Text;
                 newUser.Password = txtPassword.Text;
                 newUser.Email = txtEmail.Text;
+                newUser.CreationDate = DateTime.Now;
                 
                 switch (cmbRole.SelectedIndex) {
                     case 0:

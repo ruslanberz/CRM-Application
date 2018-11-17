@@ -95,15 +95,11 @@ namespace CRMv2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CustomerInfo ci = new CustomerInfo();
-            ci.Show();
+            Report r = new Report();
+            r.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-           
-
-        }
+     
 
         private void LogInit()
         {

@@ -8,7 +8,7 @@
     <Property Name="CustomerID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
-    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
@@ -22,6 +22,8 @@
     <Property Name="MobilePhone" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="DeactivationDate" Type="datetime" />
   </EntityType>
   <EntityType Name="Notifications">
     <Key>
@@ -31,6 +33,7 @@
     <Property Name="TaskID" Type="int" Nullable="false" />
     <Property Name="NotificationType" Type="tinyint" Nullable="false" />
     <Property Name="IsActive" Type="bit" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -65,6 +68,7 @@
     <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="RoleID" Type="tinyint" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK_Comments_Customers">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />

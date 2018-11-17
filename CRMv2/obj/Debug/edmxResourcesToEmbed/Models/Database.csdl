@@ -10,7 +10,7 @@
     <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Comments_Customers" FromRole="Comments" ToRole="Customers" />
     <NavigationProperty Name="User" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
-    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" Nullable="false" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -26,6 +26,8 @@
     <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Customers" FromRole="Customers" ToRole="Comments" />
     <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Customers" FromRole="Customers" ToRole="Tasks" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="DeactivationDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Notification">
     <Key>
@@ -36,6 +38,7 @@
     <Property Name="NotificationType" Type="Byte" Nullable="false" />
     <NavigationProperty Name="Task" Relationship="Self.FK_Notifications_Tasks1" FromRole="Notifications" ToRole="Tasks" />
     <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -77,6 +80,7 @@
     <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
     <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Users" FromRole="Users" ToRole="Tasks" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <Association Name="FK_Comments_Customers">
     <End Role="Customers" Type="Self.Customer" Multiplicity="1" />

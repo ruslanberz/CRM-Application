@@ -68,6 +68,7 @@ namespace CRMv2
             cmnt.CustomerID= cstmSelected.CustomerId;
             cmnt.UserID = currentUser.UserId;
             cmnt.Text = txtComment.Text;
+            cmnt.CreationDate = DateTime.Now;
             db.Comments.Add(cmnt);
             db.SaveChanges();
             using (TextWriter tw = new StreamWriter(path, true))

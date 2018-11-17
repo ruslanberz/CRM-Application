@@ -13,7 +13,7 @@
           <Property Name="CustomerID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Customers">
           <Key>
@@ -27,6 +27,8 @@
           <Property Name="MobilePhone" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="DeactivationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Notifications">
           <Key>
@@ -36,6 +38,7 @@
           <Property Name="TaskID" Type="int" Nullable="false" />
           <Property Name="NotificationType" Type="tinyint" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -70,6 +73,7 @@
           <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleID" Type="tinyint" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_Comments_Customers">
           <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
@@ -189,7 +193,7 @@
           <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Comments_Customers" FromRole="Comments" ToRole="Customers" />
           <NavigationProperty Name="User" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -205,6 +209,8 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Customers" FromRole="Customers" ToRole="Comments" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Customers" FromRole="Customers" ToRole="Tasks" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DeactivationDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Notification">
           <Key>
@@ -215,6 +221,7 @@
           <Property Name="NotificationType" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Task" Relationship="Self.FK_Notifications_Tasks1" FromRole="Notifications" ToRole="Tasks" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -256,6 +263,7 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Users" FromRole="Users" ToRole="Tasks" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="FK_Comments_Customers">
           <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
@@ -381,6 +389,8 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="CRMModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="DeactivationDate" ColumnName="DeactivationDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
@@ -395,6 +405,7 @@
           <EntitySetMapping Name="Notifications">
             <EntityTypeMapping TypeName="CRMModel.Notification">
               <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="TaskID" ColumnName="TaskID" />
@@ -429,6 +440,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="CRMModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />

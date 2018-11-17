@@ -102,6 +102,7 @@ namespace CRMv2
                     nt.TaskID = t.TaskId;
                     nt.NotificationType = Convert.ToByte(cmbNotifications.SelectedIndex);
                     nt.IsActive = true;
+                    nt.CreationDate = DateTime.Now;
                     
                     db.Notifications.Add(nt);
                     db.SaveChanges();

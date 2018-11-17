@@ -18,7 +18,7 @@ namespace CRMv2.Models
         public int CustomerID { get; set; }
         public int UserID { get; set; }
         public string Text { get; set; }
-        public Nullable<System.DateTime> CreationDate { get; set; }
+        public System.DateTime CreationDate { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual User User { get; set; }

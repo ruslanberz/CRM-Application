@@ -80,7 +80,7 @@ namespace CRMv2
                         l1.Content = cm.User.Name + " " + cm.User.Surname;
                         Label l2 = ((Label)FindName("lblComment_2" + commentCount));
                         l2.Visibility = Visibility.Visible;
-                        l2.Content = cm.CreationDate.Value.ToShortDateString();
+                        l2.Content = cm.CreationDate.ToShortDateString();
                         RichTextBox r = ((RichTextBox)FindName("rtb" + commentCount));
                         r.Visibility = Visibility.Visible;
                         r.SelectAll();
