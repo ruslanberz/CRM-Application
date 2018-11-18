@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMv2"
         mc:Ignorable="d"
-        Title="Müştəri yarat" Height="613.197" Width="364.223" Background="#FFD17373" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="Müştəri yarat" Height="613.197" Width="364.223" Background="#FFD17373" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Icon="favicon.ico">
     <Grid>
         <TextBox x:Name="txtCustomerName" HorizontalAlignment="Left" Height="23" Margin="125,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C" TabIndex="1"/>
         <TextBox x:Name="txtCustomerEmail" HorizontalAlignment="Left" Height="22" Margin="125,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" BorderBrush="#FFF10C0C" TabIndex="6"/>

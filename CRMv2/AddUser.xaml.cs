@@ -30,6 +30,8 @@ namespace CRMv2
             InitializeComponent();
 
         }
+
+        //metod to validate email format, works great!
         public bool IsValidEmail(string source)
         {
             return new EmailAddressAttribute().IsValid(source);
@@ -37,6 +39,8 @@ namespace CRMv2
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             CRMEntities db = new CRMEntities();
+
+            //A LOT OF VALIDATION ANDLOGS FORSURE  =)
             foreach (User item in db.Users.ToList())
             {
                 if (item.Username == txtUsername.Text)
@@ -127,7 +131,7 @@ namespace CRMv2
 
             }
             else
-            {
+            {  //User creation is here
                 string role = "";
                 User newUser = new User();
                 newUser.Name = txtName.Text;

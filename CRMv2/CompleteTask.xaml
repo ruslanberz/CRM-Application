@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CRMv2"
         mc:Ignorable="d"
         Title="Task təsdiqi
-        " Height="730.077" Width="988.168" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        " Height="730.077" Width="988.168" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="favicon.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="146*"/>

@@ -20,12 +20,14 @@ namespace CRMv2
     /// <summary>
     /// Interaction logic for CreateCompany.xaml
     /// </summary>
+    /// 
+    //This Window is for both create and  update customer tasks
     public partial class CreateCompany : Window
     {
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
         public Customer updCustomer = new Customer();
         public User currentUser = new User();
-        public bool isUpdated = false;
+        public bool isUpdated;
         
         public CreateCompany()
         {
@@ -51,7 +53,8 @@ namespace CRMv2
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             CRMEntities db = new CRMEntities();
-           
+            MessageBox.Show(isUpdated.ToString());
+
 
             if (string.IsNullOrEmpty(txtCustomerName.Text))
             {
@@ -137,7 +140,27 @@ namespace CRMv2
                     }
                     this.Close();
                 }
-                else
+                else if (isUpdated)
+                {
+                    
+                        Customer forupdate = db.Customers.Find(updCustomer.CustomerId);
+                        forupdate.CustomerName = txtCustomerName.Text;
+                        forupdate.ContactPerson = txtContactPerson.Text;
+                        forupdate.Address = txtCustomerAddress.Text;
+                        forupdate.OfficePhoneNumber = txtOfficePhoneNumber.Text;
+                        forupdate.MobilePhone = txtCustomerMobile.Text;
+                        forupdate.Email = txtCustomerEmail.Text;
+                        db.SaveChanges();
+                        MessageBox.Show("Müştəri məlumatı uğurla yeniləndi!", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
+                        using (TextWriter tw = new StreamWriter(path, true))
+                        {
+                            tw.WriteLine("{0} {1}Success:  User {2} successfully updated {3} company info", DateTime.Now.ToLongTimeString(),
+                    DateTime.Now.ToShortDateString(), currentUser.Username, forupdate.CustomerName);
+                        }
+                        isUpdated = false;
+                    
+                }
+                else 
                 {
                     MessageBox.Show("Müştəri artiq müvcuddur!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
                     using (TextWriter tw = new StreamWriter(path, true))
@@ -146,6 +169,9 @@ namespace CRMv2
                 DateTime.Now.ToShortDateString(), currentUser.Username);
                     }
                 }
+                
+                   
+                
 
                 
             }
@@ -162,27 +188,7 @@ namespace CRMv2
                 nc.CreationDate = DateTime.Now;
                 nc.UserID = currentUser.UserId;
                 nc.IsActive = true;
-                
-                
-                if (isUpdated)
-                {
-                    Customer forupdate = db.Customers.Find(updCustomer.CustomerId);
-                    forupdate.CustomerName = txtCustomerName.Text;
-                    forupdate.ContactPerson = txtContactPerson.Text;
-                    forupdate.Address = txtCustomerAddress.Text;
-                    forupdate.OfficePhoneNumber = txtOfficePhoneNumber.Text;
-                    forupdate.MobilePhone = txtCustomerMobile.Text;
-                    forupdate.Email = txtCustomerEmail.Text;
-                    db.SaveChanges();
-                    MessageBox.Show("Müştəri məlumatı uğurla yeniləndi!", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
-                    using (TextWriter tw = new StreamWriter(path, true))
-                    {
-                        tw.WriteLine("{0} {1}Success:  User {2} successfully updated {3} company info", DateTime.Now.ToLongTimeString(),
-                DateTime.Now.ToShortDateString(), currentUser.Username, forupdate.CustomerName);
-                    }
-                    isUpdated = false;
-                }
-                else {
+              
 
                     db.Customers.Add(nc);
                     db.SaveChanges();
@@ -193,7 +199,7 @@ namespace CRMv2
                 DateTime.Now.ToShortDateString(), currentUser.Username , nc.CustomerName);
                     }
 
-                }
+               
                 this.Close();
             }
             

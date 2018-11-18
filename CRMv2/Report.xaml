@@ -7,7 +7,7 @@
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" x:Class="CRMv2.Report"
         mc:Ignorable="d"
         Title="Report" Height="822" Width="1590
-    " WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    " WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Icon="favicon.ico">
     <Grid Margin="0,0,0,-3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="262*"/>

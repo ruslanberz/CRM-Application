@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMv2"
         mc:Ignorable="d"
-        Title="SelectCustomer" Height="300" Width="300" Background="#FFF05151" WindowStartupLocation="CenterScreen">
+        Title="SelectCustomer" Height="300" Width="300" Background="#FFF05151" WindowStartupLocation="CenterScreen" Icon="favicon.ico">
     <Grid>
-        <Label Content="Siyhıdan müştərini seçin" HorizontalAlignment="Left" Margin="83,71,0,0" VerticalAlignment="Top"/>
+        <Label Content="Müştərini seçin" HorizontalAlignment="Left" Margin="111,71,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="CmbCustomers" HorizontalAlignment="Left" Margin="83,108,0,0" VerticalAlignment="Top" Width="134"
                   ItemsSource="{Binding Path=Customer}"
                   DisplayMemberPath="CustomerName"

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMv2"
         mc:Ignorable="d"
-          Title="Login" Height="328.498" Width="514.805" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+          Title="Login" Height="328.498" Width="514.805" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Icon="favicon.ico">
     <Window.Triggers>
         <EventTrigger RoutedEvent="Window.Loaded">
             <BeginStoryboard>
@@ -17,7 +17,7 @@
 
     </Window.Triggers>
 
-    <Grid Margin="0,0,1,-1" Height="329" VerticalAlignment="Top" HorizontalAlignment="Right" Width="513">
+    <Grid Margin="0,0,0,-1" Height="329" VerticalAlignment="Top" HorizontalAlignment="Right" Width="514">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="Black" Offset="0"/>

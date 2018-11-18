@@ -19,6 +19,7 @@ namespace CRMv2
     /// <summary>
     /// Interaction logic for Report.xaml
     /// </summary>
+    //This metod allows to check if DateTime object in any date interval 
     public static class DateTimeExtensions
     {
         public static bool InRange(this DateTime dateToCheck, DateTime startDate, DateTime endDate)
@@ -232,7 +233,7 @@ namespace CRMv2
             }
 
         }
-
+        //Here is code related to date range reports generating. bool IsCustomReport indicates it to handle report correctly
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             if (dtpStartTime.SelectedDate == null || dtpFinishTime.SelectedDate == null)
@@ -268,6 +269,8 @@ namespace CRMv2
 
             }
         }
+
+        //This metod fills per/user related statistics on date range
         private void FillCustomUDate()
         {
             DateTime start = dtpStartTime.SelectedDate.Value;
@@ -306,6 +309,8 @@ namespace CRMv2
             chrtUFailedTasks.Value = failed;
             lblUserIncompletedTasks.Content = failed;
         }
+
+        //Thismetod generates statistics for all user for date range 
         private void FillCustomDate()
         {
             DateTime start = dtpStartTime.SelectedDate.Value;
@@ -490,7 +495,7 @@ namespace CRMv2
 
 
 
-
+        //OnClick event for regenerating per-month report
         private void btn_MonthlyReport_Click(object sender, RoutedEventArgs e)
         {
             Xstart = "start";
@@ -515,7 +520,7 @@ namespace CRMv2
 
 
         }
-
+        //Thismetod generates per-user report for current month
         private void FillCurrentUserStatistics()
         {
             int createdTaskCount = 0;
@@ -545,7 +550,7 @@ namespace CRMv2
 
             }
         }
-
+        //This metod fills data to User  mode chart which is disabled in adminisrator  due to unnecessity
         private void FillUserChart()
         {
             CRMEntities dbs = new CRMEntities();
@@ -608,6 +613,7 @@ namespace CRMv2
             }
         }
 
+        //All buttons with Report wordin name are opening same windowwith 7 owerloading constructors for each report type
         private void btn_AllTaskReport_Click(object sender, RoutedEventArgs e)
         {
            

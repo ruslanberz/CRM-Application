@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMv2"
         mc:Ignorable="d"
-        Title="Yeni istifadəçinin əlavə edilməsi" Height="572.775" Width="358.092" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" WindowStartupLocation="CenterScreen">
+        Title="Yeni istifadəçinin əlavə edilməsi" Height="572.775" Width="358.092" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" WindowStartupLocation="CenterScreen" Icon="favicon.ico">
     <Grid x:Name="btnSumbitUserAdd" Margin="0,0,0,9">
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="95,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" TabIndex="1"/>
         <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="95,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" TabIndex="3"/>

@@ -24,7 +24,9 @@ namespace CRMv2
         User loggedUser;
         public int LoggedUserId = 0;
         CRMEntities db = new CRMEntities();
+        //Path for log file
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
+        //bypassing logged user to catch privelegies
         public MainPage( User lu)
         {
             InitializeComponent();
@@ -35,24 +37,19 @@ namespace CRMv2
             FillRunningTask();
 
         }
-
+          //Filling top right corner about current user info
         public void FillUserInfo()
         {
-           //loggedUser= db.Users.First(x => x.UserId == LoggedUserId);
             lblUserName.Content = "Siz " + loggedUser.Name + " " + loggedUser.Surname;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //FillUserInfo();
-            //CheckUserControls();
-            //fillTasks();
-            //runningText.Text = "";
-            //FillRunningTask();
+            
             fillTasks();
 
         }
-
+        //Exit button, forgot to rename(
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow lw = new LoginWindow();
@@ -64,10 +61,12 @@ namespace CRMv2
             lw.Show();
             this.Close();
         }
+
+        //Filling task info on dashboard, maximum 9 tasks
         public void fillTasks()
         {
             CRMEntities dbss = new CRMEntities();
-          
+          //Hiding empty UI first
             exp_1.Visibility = Visibility.Hidden;
             exp_2.Visibility = Visibility.Hidden;
             exp_3.Visibility = Visibility.Hidden;
@@ -78,6 +77,8 @@ namespace CRMv2
             exp_8.Visibility = Visibility.Hidden;
             exp_9.Visibility = Visibility.Hidden;
             int count = 0;
+
+            //dynamicly filling all hiddden UI controls
             foreach (CRMv2.Models.Task t in dbss.Tasks.ToList())
             { 
                 if (t.User.UserId==LoggedUserId&&t.isFinised==false)
@@ -106,7 +107,7 @@ namespace CRMv2
             add.Show();
 
         }
-
+        //Disabling Unauthorized features
         private void CheckUserControls()
         {
             if (loggedUser.RoleID==2)
@@ -138,7 +139,7 @@ namespace CRMv2
             }
             Environment.Exit(0);
         }
-
+        //Adding new Customer
         private void btnAddCompany_Click(object sender, RoutedEventArgs e)
         {
             CreateCompany cc = new CreateCompany();
@@ -146,12 +147,13 @@ namespace CRMv2
             cc.ShowDialog();
         }
 
-
+        //Updating customer info, first call to customer selecton page
         private void btnCompanyUpdate_Click(object sender, RoutedEventArgs e)
         {
             SelectCustomer sc = new SelectCustomer();
             sc.Show();
         }
+        //Deleting customer, But I donot really delete it, just deactivating
         private void btnDeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
             DeleteCustomer dc = new DeleteCustomer();
@@ -159,7 +161,7 @@ namespace CRMv2
             dc.Show();
         }
 
-        
+        //Viewing customerinfo
         private void btnCompanyInfo_Click(object sender, RoutedEventArgs e)
         {
             CustomerInfo ci = new CustomerInfo();
@@ -179,7 +181,7 @@ namespace CRMv2
             ct.currentUSer = loggedUser;
             ct.Show();
         }
-
+        //This method fills running notification string with notifications. Core code is in xaml
         public void FillRunningTask()
         {
             CRMEntities dbs = new CRMEntities();
@@ -222,13 +224,14 @@ namespace CRMv2
             }
         }
 
+        //Task completion
         private void btnTaskFinish_Click(object sender, RoutedEventArgs e)
         {
             CompleteTask ct = new CompleteTask(this);
             ct.currentUser = loggedUser;
             ct.Show(); 
         }
-
+        //Reports
         private void btnReport_Click(object sender, RoutedEventArgs e)
         {
             Report rp = new Report(loggedUser);

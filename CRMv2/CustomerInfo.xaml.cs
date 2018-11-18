@@ -62,6 +62,8 @@ namespace CRMv2
 
         }
 
+
+        //Viewer for all customer info +fill all comment for them if they have it
         private void DgvCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ClearCommentUI();
@@ -101,6 +103,8 @@ namespace CRMv2
              
         }
 
+
+        //Hides Comment controls before filling and fills themd ynamicly
         private void ClearCommentUI()
         {
             for (int i = 1; i < 16; i++)

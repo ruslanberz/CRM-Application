@@ -42,7 +42,7 @@ namespace CRMv2
                 }
             }
         }
-
+         //Deactivating customer (Not Deleting) and hiding him from application users
         private void btnDeleteCustomer_Click(object sender, RoutedEventArgs e)
         {
             Customer deletedCustomer = cmbCustomers.SelectedItem as Customer;

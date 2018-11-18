@@ -49,10 +49,10 @@ namespace CRMv2
             }
             else
             {
-
+                //AUthentification related variable
                 bool isUser = false;
                 foreach (User u in db.Users)
-                {
+                {   //Authentification process
                     if (u.Username == txtLogin.Text && u.Password == txtPassword.Password)
                     {
                         MainPage main = new MainPage(u);
@@ -100,7 +100,7 @@ namespace CRMv2
         }
 
      
-
+        //Initializing log writing, default path- My Documents
         private void LogInit()
         {
             path = path + @"\CRMlogs.log";

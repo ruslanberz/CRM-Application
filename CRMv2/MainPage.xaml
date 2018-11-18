@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CRMv2"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="CRMv2.MainPage"
         mc:Ignorable="d"
-         Title="MainPage" Height="866" Width="1590" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" WindowStyle="None">
+         Title="MainPage" Height="866" Width="1590" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" WindowStyle="None" Icon="favicon.ico">
     <Grid HorizontalAlignment="Left" Height="856" VerticalAlignment="Top" Width="1643" Margin="0,0,-61,0">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

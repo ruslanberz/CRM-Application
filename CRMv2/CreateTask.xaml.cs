@@ -24,6 +24,7 @@ namespace CRMv2
         CRMEntities db = new CRMEntities();
         MainPage mp;
      public   User currentUSer = new User();
+        int count = 200;
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
 
         public CreateTask(MainPage main)
@@ -122,6 +123,22 @@ namespace CRMv2
             }
            
             
+        }
+
+        private void txtDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+             
+            if (txtDescription.Text.Length > 200)
+            {
+                txtDescription.Text = txtDescription.Text.Substring(0, 200);
+                txtDescription.SelectionStart = txtDescription.Text.Length;
+                txtDescription.SelectionLength = 0;
+            }
+            else
+            {
+                int charCount = 200 - txtDescription.Text.Length;
+                lblCounter.Content =  charCount.ToString();
+            }
         }
     }
 }

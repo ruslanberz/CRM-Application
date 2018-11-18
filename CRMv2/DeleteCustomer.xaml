@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMv2"
         mc:Ignorable="d"
-        Title="Müştəri silinməsi" Height="303.435" Width="422.519" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}">
+        Title="Müştəri silinməsi" Height="303.435" Width="422.519" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" Icon="favicon.ico">
     <Grid>
         <ComboBox x:Name="cmbCustomers" HorizontalAlignment="Left" Margin="116,89,0,0" VerticalAlignment="Top" Width="180"
                   ItemsSource="{Binding Path=Customer}"

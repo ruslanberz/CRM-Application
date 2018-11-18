@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CRMv2"
         mc:Ignorable="d"
-        Title="Müştəri haqqında məlumat" Height="866" Width="1590" WindowStartupLocation="CenterScreen">
+        Title="Müştəri haqqında məlumat" Height="866" Width="1590" WindowStartupLocation="CenterScreen" Icon="favicon.ico">
     <Grid x:Name="mainGrid" Background="#FF0E88EB" RenderTransformOrigin="0.726,0.083">
         <DataGrid x:Name="DgvCustomer" ItemsSource="{Binding Path=Customer}" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="594" Margin="98,144,0,0" VerticalAlignment="Top" Width="737"   SelectionChanged="DgvCustomer_SelectionChanged">
             <DataGrid.Columns>

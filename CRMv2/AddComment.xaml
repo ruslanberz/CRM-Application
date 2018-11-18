@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CRMv2"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="CRMv2.AddComment"
         mc:Ignorable="d"
-        Title="Rəy əlavə et" Height="542.045" Width="496.591" Background="#FFF05151" WindowStartupLocation="CenterScreen">
+        Title="Rəy əlavə et" Height="542.045" Width="496.591" Background="#FFF05151" WindowStartupLocation="CenterScreen" Icon="favicon.ico">
     <Grid>
         <ComboBox x:Name="cmbCustomerList" HorizontalAlignment="Left" Margin="81,70,0,0" VerticalAlignment="Top" Width="214" Height="24"
                   ItemsSource="{Binding Customer}"
