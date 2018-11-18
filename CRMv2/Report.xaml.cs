@@ -493,6 +493,8 @@ namespace CRMv2
 
         private void btn_MonthlyReport_Click(object sender, RoutedEventArgs e)
         {
+            Xstart = "start";
+            Xend = "end";
             if (currentUser.RoleID == 1 || currentUser.RoleID == 3)
             {
                 fillChart();
@@ -612,7 +614,14 @@ namespace CRMv2
             
                 AdvancedReport ar = new AdvancedReport(vwAllTasks,1,Xstart,Xend);
                 ar.Title = "Bütün tasklar";
-                ar.Show();
+            ar.currentUser = currentUser;
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} viewed advanced report for ALL tasks in period {4}, - {5}", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Xstart, Xend);
+            }
+            ar.Show();
+          
                 
             
         }
@@ -621,27 +630,42 @@ namespace CRMv2
         {
             AdvancedReport ar = new AdvancedReport(vwCompletedTasks,1,Xstart,Xend);
             ar.Title = "Bitirilmiş tasklar";
+            ar.currentUser = currentUser;
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} viewed advanced report for Completed tasks in period {4}, - {5}", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Xstart, Xend);
+            }
             ar.Show();
-            Xstart = "start";
-            Xend = "end";
+            
         }
 
         private void btn_IncompletedTaskReport_Click(object sender, RoutedEventArgs e)
         {
             AdvancedReport ar = new AdvancedReport(vwIncimpleteTasks,1,Xstart,Xend);
             ar.Title = "Bitirilməmiş tasklar";
+            ar.currentUser = currentUser;
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} viewed advanced report for Incompleted tasks in period {4}, - {5}", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Xstart, Xend);
+            }
             ar.Show();
-            Xstart = "start";
-            Xend = "end";
+            
         }
 
         private void btn_NewUserReport_Click(object sender, RoutedEventArgs e)
         {
             AdvancedReport ar = new AdvancedReport(vwNewUsers,2,Xstart,Xend);
             ar.Title = "Yeni istifadəçilər";
+            ar.currentUser = currentUser;
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} viewed advanced report for new users in period {4}, - {5}", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Xstart, Xend);
+            }
             ar.Show();
-            Xstart = "start";
-            Xend = "end";
+           
 
         }
 
@@ -649,27 +673,42 @@ namespace CRMv2
         {
             AdvancedReport ar = new AdvancedReport(vwNewCustomers,3,Xstart,Xend);
             ar.Title ="Yeni müştərilər";
+            ar.currentUser = currentUser;
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} viewed advanced report for new Customers in period {4}, - {5}", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Xstart, Xend);
+            }
             ar.Show();
-            Xstart = "start";
-            Xend = "end";
+           
         }
 
         private void btn_DeletedCustomerReport_Click(object sender, RoutedEventArgs e)
         {
             AdvancedReport ar = new AdvancedReport(vwDeletedCustomers,3,Xstart,Xend);
             ar.Title = "Silinmiş müştərilər";
+            ar.currentUser = currentUser;
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} viewed advanced report fordeleted cusromers in period {4}, - {5}", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Xstart, Xend);
+            }
             ar.Show();
-            Xstart = "start";
-            Xend = "end";
+           
         }
 
         private void btn_NewCommentReport_Click(object sender, RoutedEventArgs e)
         {
             AdvancedReport ar = new AdvancedReport(vwNewComment,4,Xstart,Xend);
             ar.Title = "Yeni rəylər";
+            using (TextWriter tw = new StreamWriter(path, true))
+            {
+                tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} viewed advanced report for new comments in period {4}, - {5}", DateTime.Now.ToLongTimeString(),
+        DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Xstart, Xend);
+            }
+            ar.currentUser = currentUser;
             ar.Show();
-            Xstart = "start";
-            Xend = "end";
+           
         }
     }
 

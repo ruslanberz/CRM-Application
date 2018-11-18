@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using CRMv2.Models;
 using ClosedXML.Excel;
 using System.Data;
+using System.IO;
 
 namespace CRMv2
 {
@@ -24,11 +25,17 @@ namespace CRMv2
     public partial class AdvancedReport : Window
     {
         byte localReportType;
+        //public views are suitable to generate xlsx reports- much easier way - if compare to DataGrid export
         public List<vwTaskReport> task4xlsx;
         public List<vwUsersReport> user4xslx;
         public List<vwNewCustomer> customer4xlsx;
         public List<vwCommentReport> comment4xlsx;
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
+        public User currentUser;
+
         string Start, End;
+
+        #region Overload of 4 different data strutures to automate use:
         public AdvancedReport(List<vwTaskReport> tasks,byte reportType,string start, string end)
         {
             InitializeComponent();
@@ -263,7 +270,7 @@ namespace CRMv2
 
 
         }
-
+#endregion
         public AdvancedReport(List<Notification> notification)
         {
             InitializeComponent();
@@ -279,11 +286,19 @@ namespace CRMv2
             dlg.Filter = "Excel spreedsheets (.xlsx)|*.xlsx"; // Filter files by extension
 
             // Show save file dialog box
+            //if user cancells - do not take any action
             if (dlg.ShowDialog() == false)
             {
+                using (TextWriter tw = new StreamWriter(path, true))
+                {
+                    tw.WriteLine("{0} {1} Fail:  User {2} with privelegies level : {3} failed togenerate report : User cancelled export", DateTime.Now.ToLongTimeString(),
+            DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name);
+                }
                 return;
                 
             }
+            //generating report file for tasks 
+            //localReportType - catches report type to generate appropriate structure of file, varying on vw Views
 
             if (localReportType == 1)
             {
@@ -331,12 +346,17 @@ namespace CRMv2
                     ws.Column("C").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
                     workbook.SaveAs(dlg.FileName);
                     MessageBox.Show("OK","Status: OK",MessageBoxButton.OK,MessageBoxImage.Information);
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} exported report file for tasks in period {4}, - {5}, filename: {6}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Start, End, dlg.FileName);
+                    }
 
                 }
 
 
             }
-
+           // generating xlsx report file for users
             if (localReportType==2)
             {
                 using (var workbook = new XLWorkbook())
@@ -383,11 +403,15 @@ namespace CRMv2
                     ws.Column("E").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
                     workbook.SaveAs(dlg.FileName);
                     MessageBox.Show("OK", "Status: OK", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} exported report file for users in period {4}, - {5}, filename: {6}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Start, End, dlg.FileName);
+                    }
                 }
 
             }
-
+            //generating xlsx report file for customers 
             if (localReportType == 3)
             {
                 using (var workbook = new XLWorkbook())
@@ -441,11 +465,16 @@ namespace CRMv2
                     ws.Column("E").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
                     workbook.SaveAs(dlg.FileName);
                     MessageBox.Show("OK", "Status: OK", MessageBoxButton.OK, MessageBoxImage.Information);
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} exported report file for customers in period {4}, - {5}, filename: {6}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Start, End, dlg.FileName);
+                    }
                 }
             }
-
+            //Generating xlsx report file for Comments
             if (localReportType==4)
-            {
+            {   
                 using (var workbook = new XLWorkbook())
                 {
                     var ws = workbook.Worksheets.Add("Rəy hesabatı");
@@ -485,6 +514,11 @@ namespace CRMv2
                     ws.Column("D").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
                     workbook.SaveAs(dlg.FileName);
                     MessageBox.Show("OK", "Status: OK", MessageBoxButton.OK, MessageBoxImage.Information);
+                    using (TextWriter tw = new StreamWriter(path, true))
+                    {
+                        tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} exported report file for comments in period {4}, - {5}, filename: {6}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToShortDateString(), currentUser.Username, currentUser.Role.Name, Start, End, dlg.FileName);
+                    }
 
                 }
             }
