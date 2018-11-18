@@ -31,6 +31,7 @@ namespace CRMv2.Models
         public bool IsActive { get; set; }
         public System.DateTime CreationDate { get; set; }
         public Nullable<System.DateTime> DeactivationDate { get; set; }
+        public int UserID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

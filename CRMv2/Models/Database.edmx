@@ -29,6 +29,7 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="DeactivationDate" Type="datetime" />
+          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Notifications">
           <Key>
@@ -213,6 +214,7 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="DeactivationDate" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Notification">
           <Key>
@@ -393,6 +395,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="CRMModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="DeactivationDate" ColumnName="DeactivationDate" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />

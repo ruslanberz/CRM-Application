@@ -39,8 +39,9 @@
             <Button x:Name="btn_CompletedTaskReport" Content="..." Grid.Column="1" HorizontalAlignment="Left" Margin="226,71,0,0" VerticalAlignment="Top" Width="41"  Height="22" FontWeight="Bold" FontSize="15" Click="btn_CompletedTaskReport_Click"/>
             <Button x:Name="btn_IncompletedTaskReport" Content="..." Grid.Column="1" HorizontalAlignment="Left" Margin="226,99,0,0" VerticalAlignment="Top" Width="41"  Height="22" FontWeight="Bold" FontSize="15" Click="btn_IncompletedTaskReport_Click"/>
             <Button x:Name="btn_NewUserReport" Content="..." HorizontalAlignment="Left" Margin="180,121,0,0" VerticalAlignment="Top" Width="41"  Height="22" FontWeight="Bold" FontSize="15"  Grid.ColumnSpan="2" Click="btn_NewUserReport_Click"/>
+            <Button x:Name="btn_NewCustomerReport" Content="..." HorizontalAlignment="Left" Margin="166,149,0,0" VerticalAlignment="Top" Width="41"  Height="22" FontWeight="Bold" FontSize="15"/>
         </Grid>
-        <Grid x:Name="grdCurrentUserStats" Height="229" Margin="78,110,0,0" VerticalAlignment="Top" Background="#FF29B6F6">
+        <Grid x:Name="grdCurrentUserStats" Height="229" Margin="78,110,1004,0" VerticalAlignment="Top" Background="#FF29B6F6" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="535*"/>
                 <ColumnDefinition Width="19*"/>
