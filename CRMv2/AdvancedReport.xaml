@@ -1,0 +1,14 @@
+﻿<Window x:Class="CRMv2.AdvancedReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRMv2"
+        mc:Ignorable="d"
+        Title="AdvancedReport" Height="588.048" Width="1400" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid x:Name="dgv" HorizontalAlignment="Left" Height="504" Margin="3,6,0,0" VerticalAlignment="Top" Width="1380"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="607,524,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

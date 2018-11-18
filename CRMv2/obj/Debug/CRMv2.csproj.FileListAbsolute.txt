@@ -118,3 +118,5 @@ C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\Comple
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CompleteTask.baml
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\Report.g.cs
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\Report.baml
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\AdvancedReport.g.cs
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\AdvancedReport.baml

@@ -67,6 +67,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="CRMModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
           <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Name" ColumnName="Name" />

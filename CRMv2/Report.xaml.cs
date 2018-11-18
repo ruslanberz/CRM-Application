@@ -23,13 +23,19 @@ namespace CRMv2
     {
         public static bool InRange(this DateTime dateToCheck, DateTime startDate, DateTime endDate)
         {
-            return dateToCheck >= startDate && dateToCheck < endDate;
+            return dateToCheck >= startDate && dateToCheck <= endDate;
         }
     }
     public partial class Report : Window
     {   
         CRMEntities db = new CRMEntities();
-
+        List<vwTaskReport> vwAllTasks = new List<vwTaskReport>();
+        List<vwTaskReport> vwCompletedTasks = new List<vwTaskReport>();
+        List<vwTaskReport> vwIncimpleteTasks = new List<vwTaskReport>();
+        List<vwUsersReport> vwNewUsers = new List<vwUsersReport>();
+        
+        
+        bool isCustomReport = false;
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
         User currentUser;
         public Report(User loggedUser)
@@ -51,22 +57,66 @@ namespace CRMv2
             int newCustomersCount = 0;
             int deletedCustomersCount = 0;
             int newCommentCount = 0;
+            string a = "";
+            vwAllTasks.Clear();
+            vwCompletedTasks.Clear();
+            vwIncimpleteTasks.Clear();
+            vwNewUsers.Clear();
             //FILL Task aid statistics
             foreach (Models.Task t in db.Tasks.ToList())
             {
                 if (t.CreationTime.Month == currentDate.Month&&t.CreationTime.Year==currentDate.Year)
                 {
                     TaskCountAll++;
+                    //oAllTasks.Add(t);
+                    vwTaskReport item = new vwTaskReport();
+                    item.CustomerName = t.Customer.CustomerName;
+                    item.UserName = t.User.Username;
+                    item.Description = t.Description;
+                    item.CreationTime = t.CreationTime.ToShortDateString();
+                    item.DeadlineTime = t.DeadlineTime.ToShortDateString();
+                    item.isFinished = t.isFinised;
+                    if (t.FinishTime!=null)
+                    {
+                        item.FinishedTime = t.FinishTime.Value.ToShortDateString();
+                    } 
+                    vwAllTasks.Add(item);
+
 
                 }
                 if (t.CreationTime.Month == currentDate.Month && t.CreationTime.Year == currentDate.Year&& t.isFinised==true)
                 {
                     TaskCountFinished++;
+                    vwTaskReport item = new vwTaskReport();
+                    item.CustomerName = t.Customer.CustomerName;
+                    item.UserName = t.User.Username;
+                    item.Description = t.Description;
+                    item.CreationTime = t.CreationTime.ToShortDateString();
+                    item.DeadlineTime = t.DeadlineTime.ToShortDateString();
+                    item.isFinished = t.isFinised;
+                    if (t.FinishTime != null)
+                    {
+                        item.FinishedTime = t.FinishTime.Value.ToShortDateString();
+                    }
+                    vwCompletedTasks.Add(item);
                 }
 
                 if (t.CreationTime.Month == currentDate.Month&&currentDate.Month==t.DeadlineTime.Month && currentDate.Day-t.DeadlineTime.Day>0&&t.isFinised==false)
                 {
                     TaskCountIncomplete++;
+                    vwTaskReport item = new vwTaskReport();
+                    item.CustomerName = t.Customer.CustomerName;
+                    item.UserName = t.User.Username;
+                    item.Description = t.Description;
+                    item.CreationTime = t.CreationTime.ToShortDateString();
+                    item.DeadlineTime = t.DeadlineTime.ToShortDateString();
+                    item.isFinished = t.isFinised;
+                    if (t.FinishTime != null)
+                    {
+                        item.FinishedTime = t.FinishTime.Value.ToShortDateString();
+                    }
+
+                    vwIncimpleteTasks.Add(item);
                 }
                
             }
@@ -98,6 +148,14 @@ namespace CRMv2
                 if  (u.CreationDate.Year == currentDate.Year && u.CreationDate.Month == currentDate.Month)
                     {
                     newUsersCount++;
+                    vwUsersReport item = new vwUsersReport();
+                    item.CreatedBy = u.CreatedBy;
+                    item.FullName = u.Name + " " + u.Surname;
+                    item.Email = u.Email;
+                    item.RoleName = u.Role.Name;
+                    item.Username = u.Username;
+                    item.CreationDate = u.CreationDate.ToShortDateString();
+                    vwNewUsers.Add(item);
                     }
             }
 
@@ -132,7 +190,7 @@ namespace CRMv2
             }
             chrtNewCommenetCount.Value = newCommentCount;
             lblNewCommentCount.Content = newCommentCount;
-            MessageBox.Show(currentUser.Role.Name);
+            
             using (TextWriter tw = new StreamWriter(path, true))
             {
                 tw.WriteLine("{0} {1} Success:  User {2} with privelegies level : {3} generated monthly report for {4}, {5}", DateTime.Now.ToLongTimeString(),
@@ -163,10 +221,57 @@ namespace CRMv2
             }
             else
             {
-                FillCustomDate();
+                if (currentUser.UserId==1||currentUser.UserId==3)
+                {
+                    FillCustomDate();
+                    isCustomReport = true;
+                }
+                else
+                {
+                    FillCustomUDate();
+                    isCustomReport = true;
+                }
+                
             }
         }
+        private void FillCustomUDate()
+        {
+            DateTime start = dtpStartTime.SelectedDate.Value;
+            DateTime end = dtpFinishTime.SelectedDate.Value;
+            CRMEntities database = new CRMEntities();
+            int all=0;
+            int completed=0;
+            int failed=0;
+            foreach (Models.Task tsk in database.Tasks.ToList())
+            {
+                if (currentUser.UserId==tsk.UserID)
+                {
+                    if (tsk.CreationTime.InRange(start,end))
+                    {
+                        all++;
+                    }
 
+                    if (tsk.isFinised == true&&tsk.FinishTime!=null&&tsk.FinishTime.Value.InRange(start, end))
+                    {
+                        completed++;
+                    }
+
+                    if (tsk.isFinised==false&&tsk.DeadlineTime.InRange(start,end)&&DateTime.Now>tsk.DeadlineTime)
+                    {
+                        failed++;
+                    }
+                }
+
+                
+            }
+
+            chrtUCreatedTasks.Value = all;
+            lblUserCreatedTasks.Content = all;
+            chrtUCompletedTasks.Value = completed;
+            lblUserCompletedTasks.Content = completed;
+            chrtUFailedTasks.Value = failed;
+            lblUserIncompletedTasks.Content = failed;
+        }
         private void FillCustomDate()
         {
             DateTime start = dtpStartTime.SelectedDate.Value;
@@ -275,16 +380,19 @@ namespace CRMv2
             if (currentUser.RoleID==1||currentUser.RoleID==3)
             {
                 fillChart();
+                isCustomReport = false;
             }
             if (currentUser.RoleID==2||currentUser.RoleID==3)
             {
                 FillCurrentUserStatistics();
+                isCustomReport = false;
 
             }
 
             if (currentUser.RoleID==2)
             {
                 FillUserChart();
+                isCustomReport = false;
             }
 
 
@@ -379,6 +487,34 @@ namespace CRMv2
                 chrtUser.Visibility = Visibility.Visible;
                 FillUserChart();
             }
+        }
+
+        private void btn_AllTaskReport_Click(object sender, RoutedEventArgs e)
+        {
+            if (isCustomReport==false)
+            {
+                AdvancedReport ar = new AdvancedReport(vwAllTasks);
+                ar.Show();
+            }
+        }
+
+        private void btn_CompletedTaskReport_Click(object sender, RoutedEventArgs e)
+        {
+            AdvancedReport ar = new AdvancedReport(vwCompletedTasks);
+            ar.Show();
+        }
+
+        private void btn_IncompletedTaskReport_Click(object sender, RoutedEventArgs e)
+        {
+            AdvancedReport ar = new AdvancedReport(vwIncimpleteTasks);
+            ar.Show();
+        }
+
+        private void btn_NewUserReport_Click(object sender, RoutedEventArgs e)
+        {
+            AdvancedReport ar = new AdvancedReport(vwNewUsers);
+            ar.Show();
+
         }
     }
 

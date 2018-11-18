@@ -136,7 +136,7 @@ namespace CRMv2
                 newUser.Password = txtPassword.Text;
                 newUser.Email = txtEmail.Text;
                 newUser.CreationDate = DateTime.Now;
-                
+                newUser.CreatedBy = CurrentUser.Username;
                 switch (cmbRole.SelectedIndex) {
                     case 0:
                         newUser.RoleID = 3;

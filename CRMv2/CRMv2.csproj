@@ -74,6 +74,9 @@
     <Compile Include="AddComment.xaml.cs">
       <DependentUpon>AddComment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdvancedReport.xaml.cs">
+      <DependentUpon>AdvancedReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CompleteTask.xaml.cs">
       <DependentUpon>CompleteTask.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,8 @@
       <DependentUpon>DeleteCustomer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\vwTask.cs" />
+    <Compile Include="Models\vwTaskReport.cs" />
+    <Compile Include="Models\vwUsersReport.cs" />
     <Compile Include="Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
@@ -98,6 +103,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

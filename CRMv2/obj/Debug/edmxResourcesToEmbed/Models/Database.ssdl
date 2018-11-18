@@ -70,6 +70,7 @@
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="RoleID" Type="tinyint" Nullable="false" />
     <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <Association Name="FK_Comments_Customers">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />

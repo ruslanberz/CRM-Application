@@ -82,6 +82,7 @@
     <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
     <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Users" FromRole="Users" ToRole="Tasks" />
     <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Comments_Customers">
     <End Role="Customers" Type="Self.Customer" Multiplicity="1" />

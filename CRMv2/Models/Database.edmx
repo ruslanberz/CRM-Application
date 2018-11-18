@@ -75,6 +75,7 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleID" Type="tinyint" Nullable="false" />
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_Comments_Customers">
           <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
@@ -266,6 +267,7 @@
           <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
           <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Users" FromRole="Users" ToRole="Tasks" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Comments_Customers">
           <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
@@ -443,6 +445,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="CRMModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
