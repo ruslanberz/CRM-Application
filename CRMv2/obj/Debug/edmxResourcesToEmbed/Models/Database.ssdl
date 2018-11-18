@@ -24,6 +24,7 @@
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="CreationDate" Type="datetime" Nullable="false" />
     <Property Name="DeactivationDate" Type="datetime" />
+    <Property Name="UserID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Notifications">
     <Key>
@@ -96,6 +97,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Customers_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Notifications_Tasks1">
     <End Role="Tasks" Type="Self.Tasks" Multiplicity="1" />
     <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
@@ -158,6 +171,10 @@
     <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_Users" Association="Self.FK_Customers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Customers" EntitySet="Customers" />
     </AssociationSet>
     <AssociationSet Name="FK_Notifications_Tasks1" Association="Self.FK_Notifications_Tasks1">
       <End Role="Tasks" EntitySet="Tasks" />

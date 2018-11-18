@@ -21,29 +21,35 @@ namespace CRMv2
     /// </summary>
     public partial class MainPage : Window
     {
-        public int LoggedUserId = 0;
         User loggedUser;
+        public int LoggedUserId = 0;
         CRMEntities db = new CRMEntities();
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
-        public MainPage()
+        public MainPage( User lu)
         {
             InitializeComponent();
+            this.loggedUser = lu;
+            FillUserInfo();
+            CheckUserControls();
+            runningText.Text = "";
+            FillRunningTask();
 
         }
 
         public void FillUserInfo()
         {
-           loggedUser= db.Users.First(x => x.UserId == LoggedUserId);
+           //loggedUser= db.Users.First(x => x.UserId == LoggedUserId);
             lblUserName.Content = "Siz " + loggedUser.Name + " " + loggedUser.Surname;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            FillUserInfo();
-            CheckUserControls();
+            //FillUserInfo();
+            //CheckUserControls();
+            //fillTasks();
+            //runningText.Text = "";
+            //FillRunningTask();
             fillTasks();
-            runningText.Text = "";
-            FillRunningTask();
 
         }
 

@@ -8,26 +8,9 @@
     <Property Name="CustomerID" Type="Int32" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK_Comments_Customers" FromRole="Comments" ToRole="Customers" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="User" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
-    <Property Name="CreationDate" Type="DateTime" Precision="3" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Customer">
-    <Key>
-      <PropertyRef Name="CustomerId" />
-    </Key>
-    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="OfficePhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="MobilePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Customers" FromRole="Customers" ToRole="Comments" />
-    <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Customers" FromRole="Customers" ToRole="Tasks" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="CreationDate" Type="DateTime" Precision="3" Nullable="false" />
-    <Property Name="DeactivationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="CRMModel.FK_Comments_Customers" FromRole="Comment" ToRole="Customer" />
   </EntityType>
   <EntityType Name="Notification">
     <Key>
@@ -36,9 +19,9 @@
     <Property Name="NotificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TaskID" Type="Int32" Nullable="false" />
     <Property Name="NotificationType" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Task" Relationship="Self.FK_Notifications_Tasks1" FromRole="Notifications" ToRole="Tasks" />
     <Property Name="IsActive" Type="Boolean" />
     <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Task" Relationship="Self.FK_Notifications_Tasks1" FromRole="Notifications" ToRole="Tasks" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -48,8 +31,8 @@
     <Property Name="Administration" Type="Boolean" Nullable="false" />
     <Property Name="Moderation" Type="Boolean" Nullable="false" />
     <Property Name="CanView" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
     <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
   </EntityType>
   <EntityType Name="Task">
     <Key>
@@ -62,10 +45,10 @@
     <Property Name="CreationTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DeadlineTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="isFinised" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Customer" Relationship="Self.FK_Tasks_Customers" FromRole="Tasks" ToRole="Customers" />
+    <Property Name="FinishTime" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_Tasks1" FromRole="Tasks" ToRole="Notifications" />
     <NavigationProperty Name="User" Relationship="Self.FK_Tasks_Users" FromRole="Tasks" ToRole="Users" />
-    <Property Name="FinishTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="CRMModel.FK_Tasks_Customers" FromRole="Task" ToRole="Customer" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -78,24 +61,13 @@
     <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="RoleID" Type="Byte" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
     <NavigationProperty Name="Tasks" Relationship="Self.FK_Tasks_Users" FromRole="Users" ToRole="Tasks" />
-    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CreatedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Customers" Relationship="CRMModel.FK_Customers_Users" FromRole="User" ToRole="Customer" />
   </EntityType>
-  <Association Name="FK_Comments_Customers">
-    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
-    <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="CustomerId" />
-      </Principal>
-      <Dependent Role="Comments">
-        <PropertyRef Name="CustomerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Comments_Users">
     <End Role="Users" Type="Self.User" Multiplicity="1" />
     <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
@@ -105,18 +77,6 @@
       </Principal>
       <Dependent Role="Comments">
         <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Tasks_Customers">
-    <End Role="Customers" Type="Self.Customer" Multiplicity="1" />
-    <End Role="Tasks" Type="Self.Task" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="CustomerId" />
-      </Principal>
-      <Dependent Role="Tasks">
-        <PropertyRef Name="CustomerID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -158,22 +118,13 @@
   </Association>
   <EntityContainer Name="CRMEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Comments" EntityType="Self.Comment" />
-    <EntitySet Name="Customers" EntityType="Self.Customer" />
     <EntitySet Name="Notifications" EntityType="Self.Notification" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="Tasks" EntityType="Self.Task" />
     <EntitySet Name="Users" EntityType="Self.User" />
-    <AssociationSet Name="FK_Comments_Customers" Association="Self.FK_Comments_Customers">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="Comments" EntitySet="Comments" />
-    </AssociationSet>
     <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Comments" EntitySet="Comments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Tasks_Customers" Association="Self.FK_Tasks_Customers">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="Tasks" EntitySet="Tasks" />
     </AssociationSet>
     <AssociationSet Name="FK_Notifications_Tasks1" Association="Self.FK_Notifications_Tasks1">
       <End Role="Tasks" EntitySet="Tasks" />
@@ -187,5 +138,73 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="Tasks" EntitySet="Tasks" />
     </AssociationSet>
+    <EntitySet Name="Customers" EntityType="CRMModel.Customer" />
+    <AssociationSet Name="FK_Comments_Customers" Association="CRMModel.FK_Comments_Customers">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tasks_Customers" Association="CRMModel.FK_Tasks_Customers">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customers_Users" Association="CRMModel.FK_Customers_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OfficePhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobilePhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeactivationDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="CRMModel.FK_Comments_Customers" FromRole="Customer" ToRole="Comment" />
+    <NavigationProperty Name="Tasks" Relationship="CRMModel.FK_Tasks_Customers" FromRole="Customer" ToRole="Task" />
+    <NavigationProperty Name="User" Relationship="CRMModel.FK_Customers_Users" FromRole="Customer" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Comments_Customers">
+    <End Type="CRMModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="CRMModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tasks_Customers">
+    <End Type="CRMModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="CRMModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customers_Users">
+    <End Type="CRMModel.User" Role="User" Multiplicity="1" />
+    <End Type="CRMModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

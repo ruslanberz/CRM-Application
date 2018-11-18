@@ -29,9 +29,9 @@ namespace CRMv2.Models
         public bool isFinised { get; set; }
         public Nullable<System.DateTime> FinishTime { get; set; }
     
-        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Notification> Notifications { get; set; }
         public virtual User User { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

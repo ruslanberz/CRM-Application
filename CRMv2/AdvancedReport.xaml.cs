@@ -121,7 +121,7 @@ namespace CRMv2
             });
             dgv.Columns.Add(new DataGridTextColumn()
             {
-                Header = "Hüsuslar",
+                Header = "Hüquqlar",
                 Width = new DataGridLength(1, DataGridLengthUnitType.Star),
                 FontSize = 12,
                 Binding = new Binding("RoleName")
@@ -136,14 +136,107 @@ namespace CRMv2
             dgv.Items.Refresh();
         }
 
-        public AdvancedReport(List<Customer> customer)
+        public AdvancedReport(List<vwNewCustomer> customer)
         {
             InitializeComponent();
+            List<vwNewCustomer> my = customer;
+            dgv.ItemsSource = my;
+            dgv.AutoGenerateColumns = false;
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Kim tərəfindən yaradılıb",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("CreatedBy")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Müştəri",
+                Width = new DataGridLength(2, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("CustomerName")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Əlaqəli şəxs",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("ContactPerson")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Ünvan",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("Address")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Ofis telefon nömrəsi",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("OfficePhone")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Mobil nömrə",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("Mobile")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "E-poçt",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("Email")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Yaradılma tarixi",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("CreationDate")
+            });
+            dgv.Items.Refresh();
 
         }
-        public AdvancedReport(List<Comment> customer)
+        public AdvancedReport(List<vwCommentReport> comment)
         {
             InitializeComponent();
+            List<vwCommentReport> my = comment;
+            dgv.ItemsSource = my;
+            dgv.AutoGenerateColumns = false;
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Kim tərəfindən yaradılıb",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("CreatedBy")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Müştəri",
+                Width = new DataGridLength(2, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("CustomerName")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Rəy",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("Text")
+            });
+            dgv.Columns.Add(new DataGridTextColumn()
+            {
+                Header = "Yaradılma tarixi",
+                Width = new DataGridLength(1, DataGridLengthUnitType.Star),
+                FontSize = 12,
+                Binding = new Binding("CreationDate")
+            });
+            dgv.Items.Refresh();
+
 
         }
 

@@ -19,6 +19,7 @@ namespace CRMv2.Models
         {
             this.Comments = new HashSet<Comment>();
             this.Tasks = new HashSet<Task>();
+            this.Customers = new HashSet<Customer>();
         }
     
         public int UserId { get; set; }
@@ -36,5 +37,7 @@ namespace CRMv2.Models
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

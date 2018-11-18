@@ -24,7 +24,7 @@ namespace CRMv2
     {
 
         CRMEntities db = new CRMEntities();
-        MainPage main = new MainPage();
+       
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public LoginWindow()
         {
@@ -55,6 +55,7 @@ namespace CRMv2
                 {
                     if (u.Username == txtLogin.Text && u.Password == txtPassword.Password)
                     {
+                        MainPage main = new MainPage(u);
                         main.LoggedUserId = u.UserId;
                         main.Show();
                         isUser = true;

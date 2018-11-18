@@ -26,10 +26,10 @@ namespace CRMv2.Models
         }
     
         public virtual DbSet<Comment> Comments { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
     }
 }

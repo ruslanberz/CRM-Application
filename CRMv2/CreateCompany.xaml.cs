@@ -160,6 +160,7 @@ namespace CRMv2
                 nc.MobilePhone = txtCustomerMobile.Text;
                 nc.Email = txtCustomerEmail.Text;
                 nc.CreationDate = DateTime.Now;
+                nc.UserID = currentUser.UserId;
                 nc.IsActive = true;
                 
                 
