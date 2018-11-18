@@ -79,7 +79,7 @@ namespace CRMv2
             DateTime.Now.ToShortDateString(), CurrentUser.Username);
                 }
 
-            } else if (string.IsNullOrEmpty(txtPassword.Text))
+            } else if (string.IsNullOrEmpty(txtPassword.Password))
                {
                 MessageBox.Show("Şifrəni daxil edin!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
                 using (TextWriter tw = new StreamWriter(path, true))
@@ -88,7 +88,7 @@ namespace CRMv2
             DateTime.Now.ToShortDateString(), CurrentUser.Username);
                 }
             }
-            else if (txtPassword.Text!=txtPasswordConfirm.Text)
+            else if (txtPassword.Password!=txtPasswordConfirm.Password)
             {
                 MessageBox.Show("Şifrə və şifrənin təsdiqi eyni olmalıdır!", "Səhv", MessageBoxButton.OK, MessageBoxImage.Error);
                 using (TextWriter tw = new StreamWriter(path, true))
@@ -133,7 +133,7 @@ namespace CRMv2
                 newUser.Name = txtName.Text;
                 newUser.Surname = txtSurname.Text;
                 newUser.Username = txtUsername.Text;
-                newUser.Password = txtPassword.Text;
+                newUser.Password = txtPassword.Password;
                 newUser.Email = txtEmail.Text;
                 newUser.CreationDate = DateTime.Now;
                 newUser.CreatedBy = CurrentUser.Username;

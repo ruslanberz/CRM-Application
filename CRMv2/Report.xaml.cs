@@ -37,7 +37,8 @@ namespace CRMv2
         List<vwNewCustomer> vwDeletedCustomers = new List<vwNewCustomer>();
         List<vwCommentReport> vwNewComment = new List<vwCommentReport>();
 
-
+        string Xstart = "start";
+        string Xend = "end";
         bool isCustomReport = false;
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\CRMlogs.log";
         User currentUser;
@@ -308,7 +309,9 @@ namespace CRMv2
         private void FillCustomDate()
         {
             DateTime start = dtpStartTime.SelectedDate.Value;
+            Xstart = dtpStartTime.SelectedDate.Value.ToShortDateString();
             DateTime finish = dtpFinishTime.SelectedDate.Value;
+            Xend= dtpFinishTime.SelectedDate.Value.ToShortDateString();
             DateTime current = DateTime.Now;
             int TaskCountAll = 0;
             int TaskCountFinished = 0;
@@ -607,7 +610,7 @@ namespace CRMv2
         {
            
             
-                AdvancedReport ar = new AdvancedReport(vwAllTasks);
+                AdvancedReport ar = new AdvancedReport(vwAllTasks,1,Xstart,Xend);
                 ar.Title = "Bütün tasklar";
                 ar.Show();
                 
@@ -616,45 +619,57 @@ namespace CRMv2
 
         private void btn_CompletedTaskReport_Click(object sender, RoutedEventArgs e)
         {
-            AdvancedReport ar = new AdvancedReport(vwCompletedTasks);
+            AdvancedReport ar = new AdvancedReport(vwCompletedTasks,1,Xstart,Xend);
             ar.Title = "Bitirilmiş tasklar";
             ar.Show();
+            Xstart = "start";
+            Xend = "end";
         }
 
         private void btn_IncompletedTaskReport_Click(object sender, RoutedEventArgs e)
         {
-            AdvancedReport ar = new AdvancedReport(vwIncimpleteTasks);
+            AdvancedReport ar = new AdvancedReport(vwIncimpleteTasks,1,Xstart,Xend);
             ar.Title = "Bitirilməmiş tasklar";
             ar.Show();
+            Xstart = "start";
+            Xend = "end";
         }
 
         private void btn_NewUserReport_Click(object sender, RoutedEventArgs e)
         {
-            AdvancedReport ar = new AdvancedReport(vwNewUsers);
+            AdvancedReport ar = new AdvancedReport(vwNewUsers,2,Xstart,Xend);
             ar.Title = "Yeni istifadəçilər";
             ar.Show();
+            Xstart = "start";
+            Xend = "end";
 
         }
 
         private void btn_NewCustomerReport_Click(object sender, RoutedEventArgs e)
         {
-            AdvancedReport ar = new AdvancedReport(vwNewCustomers);
+            AdvancedReport ar = new AdvancedReport(vwNewCustomers,3,Xstart,Xend);
             ar.Title ="Yeni müştərilər";
             ar.Show();
+            Xstart = "start";
+            Xend = "end";
         }
 
         private void btn_DeletedCustomerReport_Click(object sender, RoutedEventArgs e)
         {
-            AdvancedReport ar = new AdvancedReport(vwDeletedCustomers);
+            AdvancedReport ar = new AdvancedReport(vwDeletedCustomers,3,Xstart,Xend);
             ar.Title = "Silinmiş müştərilər";
             ar.Show();
+            Xstart = "start";
+            Xend = "end";
         }
 
         private void btn_NewCommentReport_Click(object sender, RoutedEventArgs e)
         {
-            AdvancedReport ar = new AdvancedReport(vwNewComment);
+            AdvancedReport ar = new AdvancedReport(vwNewComment,4,Xstart,Xend);
             ar.Title = "Yeni rəylər";
             ar.Show();
+            Xstart = "start";
+            Xend = "end";
         }
     }
 

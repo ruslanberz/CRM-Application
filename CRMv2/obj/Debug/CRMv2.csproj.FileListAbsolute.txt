@@ -15,7 +15,6 @@ c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\Entity
 c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\EntityFramework.SqlServer.dll
 c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\EntityFramework.xml
 c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\EntityFramework.SqlServer.xml
-c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CRMv2.csprojResolveAssemblyReference.cache
 c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\MainPage.g.cs
 c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CRMv2_Content.g.cs
 c:\users\user\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\MainPage.baml
@@ -120,3 +119,11 @@ C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\Report
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\Report.baml
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\AdvancedReport.g.cs
 C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\AdvancedReport.baml
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\obj\Debug\CRMv2.csprojResolveAssemblyReference.cache
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\ClosedXML.dll
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\ExcelNumberFormat.dll
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\FastMember.Signed.dll
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\ClosedXML.xml
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\User\documents\visual studio 2017\Projects\CRMv2\CRMv2\bin\Debug\ExcelNumberFormat.xml

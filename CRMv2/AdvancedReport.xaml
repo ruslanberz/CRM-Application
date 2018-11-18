@@ -8,7 +8,7 @@
         Title="AdvancedReport" Height="588.048" Width="1400" WindowStartupLocation="CenterScreen">
     <Grid>
         <DataGrid x:Name="dgv" HorizontalAlignment="Left" Height="504" Margin="3,6,0,0" VerticalAlignment="Top" Width="1380"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="607,524,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnExport" Content="Export" HorizontalAlignment="Left" Margin="651,524,0,0" VerticalAlignment="Top" Width="91" TabIndex="1" Click="btnExport_Click"/>
 
     </Grid>
 </Window>
